@@ -37,7 +37,7 @@ export function Header() {
                 <div className="flex items-center">
                     <Link className="flex items-center" href="/feed">
                         <span className="font-serif text-2xl font-bold text-gray-900 tracking-tight">
-                            Offbeat Atlas
+                            Musafir
                         </span>
                     </Link>
                 </div>

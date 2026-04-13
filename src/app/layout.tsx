@@ -20,7 +20,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Offbeat Atlas",
+  title: "Musafir",
   description: "Discover the world's hidden gems.",
 };
 

@@ -39,7 +39,7 @@ export default function SignupPage() {
                 photoURL: "",
             });
 
-            toast.success(`Welcome to Nomadi Circle, ${firstName}! 🌏`);
+            toast.success(`Welcome to Musafir, ${firstName}! 🌏`);
             router.push("/feed");
         } catch (err: any) {
             const msg = err.code === "auth/email-already-in-use"

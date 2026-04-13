@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">NomadiCircle</string>
-    <string name="title_activity_main">NomadiCircle</string>
-    <string name="package_name">com.nomadicircle.mobile</string>
-    <string name="custom_url_scheme">com.nomadicircle.mobile</string>
+    <string name="app_name">Musafir</string>
+    <string name="title_activity_main">Musafir</string>
+    <string name="package_name">com.musafir.mobile</string>
+    <string name="custom_url_scheme">com.musafir.mobile</string>
 </resources>

@@ -58,7 +58,7 @@ export default function LoginPage() {
                     <div className="text-center lg:text-left">
                         <h1 className="text-3xl font-heading font-bold text-foreground">Sign in</h1>
                         <p className="text-muted-foreground mt-2">
-                            New to Nomadi Circle?{" "}
+                            New to Musafir?{" "}
                             <Link href="/signup" className="text-primary hover:underline font-medium">
                                 Create an account
                             </Link>
