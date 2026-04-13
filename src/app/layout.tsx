@@ -8,6 +8,7 @@ import { Header } from "@/components/layout/Header";
 import { BottomNav } from "@/components/layout/BottomNav";
 import { AIAssistant } from "@/components/ai/AIAssistant";
 import { OfflineBanner } from "@/components/desktop/OfflineBanner";
+import { RequireUsername } from "@/components/auth/RequireUsername";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -41,17 +42,19 @@ export default function RootLayout({
       >
         <OfflineBanner />
         <AuthProvider>
-          <div className="flex flex-col min-h-screen">
-            <Header />
-            <main className="flex-1">
-              {children}
-            </main>
-            <div className="md:hidden">
-              <BottomNav />
+          <RequireUsername>
+            <div className="flex flex-col min-h-screen">
+              <Header />
+              <main className="flex-1">
+                {children}
+              </main>
+              <div className="md:hidden">
+                <BottomNav />
+              </div>
             </div>
-          </div>
-          <AIAssistant />
-          <Toaster position="top-center" richColors />
+            <AIAssistant />
+            <Toaster position="top-center" richColors />
+          </RequireUsername>
         </AuthProvider>
       </body>
     </html>

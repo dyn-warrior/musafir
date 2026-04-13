@@ -2,6 +2,7 @@
 
 import { X } from "lucide-react";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 interface Story {
     id: string;
@@ -10,6 +11,7 @@ interface Story {
     mediaUrl?: string;
     mediaType?: "image" | "video";
     caption?: string;
+    authorUid?: string;
     createdAt?: any;
     expiresAt?: any;
 }
@@ -92,7 +94,7 @@ export function StoryViewer({ stories, initialStoryIndex, onClose }: StoryViewer
 
             {/* Header */}
             <div className="absolute top-6 left-4 right-4 flex items-center justify-between z-20 text-white">
-                <div className="flex items-center gap-3">
+                <Link href={`/profile/view?uid=${currentStory.authorUid}`} className="flex items-center gap-3 hover:opacity-80 transition-opacity">
                     <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-white/60">
                         <img src={currentStory.image} alt={currentStory.name} className="w-full h-full object-cover" />
                     </div>
@@ -100,7 +102,7 @@ export function StoryViewer({ stories, initialStoryIndex, onClose }: StoryViewer
                         <p className="font-semibold text-sm leading-tight">{currentStory.name}</p>
                         <p className="text-xs text-white/70">{timeAgo(currentStory.createdAt)} · disappears in 24h</p>
                     </div>
-                </div>
+                </Link>
                 <button onClick={onClose} className="p-1">
                     <X className="w-6 h-6" />
                 </button>

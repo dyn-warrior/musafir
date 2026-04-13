@@ -637,6 +637,7 @@ export async function getStoriesByUser(uid: string): Promise<Story[]> {
 
 export interface UserProfile {
     uid: string;
+    username?: string;
     displayName: string;
     email: string;
     photoURL: string;
@@ -686,9 +687,55 @@ export async function getUserProfile(uid: string): Promise<UserProfile | null> {
 
 export async function updateUserProfile(
     uid: string,
-    data: Partial<Pick<UserProfile, "displayName" | "bio" | "location" | "photoURL">>
+    data: Partial<Pick<UserProfile, "displayName" | "bio" | "location" | "photoURL" | "username">>
 ): Promise<void> {
     await updateDoc(doc(db, "users", uid), { ...data, updatedAt: serverTimestamp() });
+}
+
+// ----------- Followers / Following -----------
+
+/**
+ * Check if current user is following the target user.
+ */
+export async function checkIsFollowing(currentUid: string, targetUid: string): Promise<boolean> {
+    const fn = await import("firebase/firestore");
+    const docRef = fn.doc(db, "users", currentUid, "following", targetUid);
+    const snap = await fn.getDoc(docRef);
+    return snap.exists();
+}
+
+/**
+ * Toggle follow/unfollow between users.
+ * Returns true if action resulted in "Following".
+ */
+export async function toggleFollow(currentUid: string, targetUid: string): Promise<boolean> {
+    const fn = await import("firebase/firestore");
+    const followingRef = fn.doc(db, "users", currentUid, "following", targetUid);
+    const followerRef = fn.doc(db, "users", targetUid, "followers", currentUid);
+
+    const currentUserRef = fn.doc(db, "users", currentUid);
+    const targetUserRef = fn.doc(db, "users", targetUid);
+
+    let finalState = false;
+
+    await fn.runTransaction(db, async (t: any) => {
+        const snap = await t.get(followingRef);
+        if (snap.exists()) {
+            t.delete(followingRef);
+            t.delete(followerRef);
+            t.update(currentUserRef, { followingCount: fn.increment(-1) });
+            t.update(targetUserRef, { followersCount: fn.increment(-1) });
+            finalState = false;
+        } else {
+            t.set(followingRef, { createdAt: fn.serverTimestamp() });
+            t.set(followerRef, { createdAt: fn.serverTimestamp() });
+            t.update(currentUserRef, { followingCount: fn.increment(1) });
+            t.update(targetUserRef, { followersCount: fn.increment(1) });
+            finalState = true;
+        }
+    });
+
+    return finalState;
 }
 
 // ----------- Direct Messages (DMs) -----------
@@ -795,11 +842,32 @@ export async function sendDM(
 
 // ----------- User Search -----------
 
-/** Search users by displayName prefix (case-insensitive best-effort) */
-export async function searchUsers(nameQuery: string): Promise<UserProfile[]> {
-    if (!nameQuery.trim()) return [];
-    const q = query(collection(db, "users"), orderBy("displayName"), where("displayName", ">=", nameQuery), where("displayName", "<=", nameQuery + "\uf8ff"));
-    const snap = await getDocs(q);
-    return snap.docs.map((d) => ({ uid: d.id, ...(d.data() as Omit<UserProfile, "uid">) }));
+/** Search users by displayName prefix or exact username */
+export async function searchUsers(queryStr: string): Promise<UserProfile[]> {
+    if (!queryStr.trim()) return [];
+
+    // Simple lowercasing for search against displayName or username could be complex in Firebase
+    // If you need actual advanced search, algolia is better.
+    // For now, let's pull all users and filter locally to support both efficiently if dataset is small,
+    // OR we do a query for displayName >= queryStr and <= queryStr + '\uf8ff'
+
+    // We'll fetch all users for now since dataset is small or we can do a single query.
+    // Let's do local filtering for simplicity and robustness on "Both" name and username.
+    const { collection, getDocs } = await import("firebase/firestore");
+    const snap = await getDocs(collection(db, "users"));
+    const allUsers = snap.docs.map(d => ({ uid: d.id, ...d.data() } as UserProfile));
+
+    const q = queryStr.toLowerCase();
+    return allUsers.filter(u =>
+        u.displayName?.toLowerCase().includes(q) ||
+        u.username?.toLowerCase().includes(q)
+    );
 }
 
+/** Check if username is already taken */
+export async function isUsernameTaken(username: string): Promise<boolean> {
+    const { collection, getDocs, query, where } = await import("firebase/firestore");
+    const q = query(collection(db, "users"), where("username", "==", username.toLowerCase()));
+    const snap = await getDocs(q);
+    return !snap.empty;
+}

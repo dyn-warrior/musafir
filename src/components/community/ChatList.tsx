@@ -229,9 +229,11 @@ export function ChatList({ activeChatId, onSelectChat, onOpenCreateModal }: Chat
                                 />
                                 <div className="flex-1 min-w-0">
                                     <p className="font-semibold text-sm truncate">{person.displayName || "Musafir User"}</p>
-                                    {person.location && <p className="text-xs text-muted-foreground truncate">{person.location}</p>}
+                                    <p className="text-xs text-muted-foreground truncate">
+                                        {person.username ? `@${person.username}` : person.location || ""}
+                                    </p>
                                 </div>
-                                <MessageCircle className={cn("w-4 h-4 flex-shrink-0 text-primary", openingDM === person.uid && "animate-pulse")} />
+                                <MessageCircle className={cn("w-4 h-4 flex-shrink-0 text-brand-teal", openingDM === person.uid && "animate-pulse")} />
                             </button>
                         ))
                     )

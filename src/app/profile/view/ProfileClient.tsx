@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getUserProfile, getPosts } from "@/lib/firestore";
+import { getUserProfile, getPosts, checkIsFollowing, toggleFollow } from "@/lib/firestore";
+import { useAuth } from "@/context/AuthContext";
+import { toast } from "sonner";
 import { MapPin, Calendar, Grid3X3 } from "lucide-react";
 import { BottomNav } from "@/components/layout/BottomNav";
 import Link from "next/link";
@@ -10,6 +12,10 @@ export default function ProfileClient({ uid }: { uid: string }) {
     const [profile, setProfile] = useState<any>(null);
     const [posts, setPosts] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
+
+    const { user: authUser } = useAuth();
+    const [isFollowing, setIsFollowing] = useState(false);
+    const [actionLoading, setActionLoading] = useState(false);
 
     useEffect(() => {
         if (!uid) return;
@@ -23,6 +29,11 @@ export default function ProfileClient({ uid }: { uid: string }) {
                     (!post.authorUid && p?.displayName && post.user_name === p.displayName)
                 );
                 setPosts(userPosts);
+
+                if (authUser && authUser.uid !== uid) {
+                    const following = await checkIsFollowing(authUser.uid, uid);
+                    setIsFollowing(following);
+                }
             } catch (e) {
                 console.error("Failed to load public profile:", e);
             } finally {
@@ -61,6 +72,26 @@ export default function ProfileClient({ uid }: { uid: string }) {
     const displayName = profile.displayName || "Musafir User";
     const photoURL = profile.photoURL;
     const initials = displayName.split(" ").map((n: string) => n[0]).join("").slice(0, 2).toUpperCase();
+
+    const handleFollow = async () => {
+        if (!authUser) {
+            toast.error("Please sign in to follow users.");
+            return;
+        }
+        setActionLoading(true);
+        try {
+            const newState = await toggleFollow(authUser.uid, uid);
+            setIsFollowing(newState);
+            // Optimistically update follower count
+            setProfile((p: any) => ({ ...p, followersCount: (p.followersCount || 0) + (newState ? 1 : -1) }));
+            toast.success(newState ? "Following" : "Unfollowed");
+        } catch (err) {
+            toast.error("Failed to update follow status.");
+            console.error(err);
+        } finally {
+            setActionLoading(false);
+        }
+    };
 
     return (
         <div className="min-h-screen bg-[#FDFBF7] text-gray-900 font-sans pb-24">
@@ -112,7 +143,31 @@ export default function ProfileClient({ uid }: { uid: string }) {
                             <p className="font-bold text-lg">{posts.length}</p>
                             <p className="text-xs text-gray-400">Posts</p>
                         </div>
+                        <div className="text-center">
+                            <p className="font-bold text-lg">{profile.followersCount || 0}</p>
+                            <p className="text-xs text-gray-400">Followers</p>
+                        </div>
+                        <div className="text-center">
+                            <p className="font-bold text-lg">{profile.followingCount || 0}</p>
+                            <p className="text-xs text-gray-400">Following</p>
+                        </div>
                     </div>
+
+                    {/* Follow Action */}
+                    {authUser && authUser.uid !== uid && (
+                        <div className="pt-2 w-full max-w-[200px] mx-auto">
+                            <button
+                                onClick={handleFollow}
+                                disabled={actionLoading}
+                                className={`w-full py-2.5 rounded-full text-sm font-semibold transition ${isFollowing
+                                        ? "border border-gray-300 bg-transparent text-gray-700 hover:bg-gray-50"
+                                        : "bg-primary text-white hover:bg-primary/90"
+                                    } disabled:opacity-50`}
+                            >
+                                {actionLoading ? "Updating..." : isFollowing ? "Following" : "Follow"}
+                            </button>
+                        </div>
+                    )}
                 </div>
 
                 {/* Posts grid */}

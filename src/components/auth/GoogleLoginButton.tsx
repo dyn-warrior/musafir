@@ -2,37 +2,52 @@
 
 import { Button } from "@/components/ui/button";
 import { auth, googleProvider } from "@/lib/firebase";
-import { signInWithPopup } from "firebase/auth";
-import { useState } from "react";
+import { signInWithRedirect, getRedirectResult } from "firebase/auth";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
 export function GoogleLoginButton() {
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
+    const hasCheckedRedirect = useRef(false);
+
+    useEffect(() => {
+        if (hasCheckedRedirect.current) return;
+        hasCheckedRedirect.current = true;
+
+        setIsLoading(true);
+        getRedirectResult(auth)
+            .then(async (result) => {
+                if (result && result.user) {
+                    const user = result.user;
+                    // Save / update user profile in Firestore
+                    const { upsertUserProfile } = await import("@/lib/firestore");
+                    await upsertUserProfile(user.uid, {
+                        displayName: user.displayName || "Musafir User",
+                        email: user.email || "",
+                        photoURL: user.photoURL || "",
+                    });
+
+                    toast.success(`Welcome, ${user.displayName?.split(" ")[0] || "Nomad"}! 🌏`);
+                    router.push("/feed");
+                }
+            })
+            .catch((error: any) => {
+                console.error("Google redirect login failed:", error);
+                toast.error("Google sign-in failed. Please try again.");
+            })
+            .finally(() => {
+                setIsLoading(false);
+            });
+    }, [router]);
 
     const handleGoogleLogin = async () => {
         setIsLoading(true);
         try {
-            const result = await signInWithPopup(auth, googleProvider);
-            const user = result.user;
-
-            // Save / update user profile in Firestore
-            const { upsertUserProfile } = await import("@/lib/firestore");
-            await upsertUserProfile(user.uid, {
-                displayName: user.displayName || "Musafir User",
-                email: user.email || "",
-                photoURL: user.photoURL || "",
-            });
-
-            toast.success(`Welcome, ${user.displayName?.split(" ")[0] || "Nomad"}! 🌏`);
-            router.push("/feed");
+            await signInWithRedirect(auth, googleProvider);
         } catch (error: any) {
-            console.error("Google login failed:", error);
-            if (error.code !== "auth/popup-closed-by-user") {
-                toast.error("Google sign-in failed. Please try again.");
-            }
-        } finally {
+            console.error("Google redirect init failed:", error);
             setIsLoading(false);
         }
     };

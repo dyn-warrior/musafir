@@ -37,7 +37,7 @@ function CommunityContent() {
     };
 
     return (
-        <div className="h-screen bg-background flex flex-col md:flex-row overflow-hidden pb-16 md:pb-0 md:pl-64">
+        <div className="h-screen w-full relative max-w-[100vw] overflow-x-hidden bg-background flex flex-col md:flex-row pb-16 md:pb-0 md:pl-64">
             {/* Sidebar / List */}
             <div className={cn(
                 "w-full md:w-80 lg:w-96 h-full flex-shrink-0 transition-transform duration-300 absolute md:relative z-10 bg-background",

@@ -121,7 +121,6 @@ export default function ProfilePage() {
 
                     <div className="space-y-1">
                         <h1 className="font-heading text-3xl font-bold">{displayName}</h1>
-                        <p className="text-gray-500 text-sm">{user.email}</p>
                         {profile?.bio && (
                             <p className="text-gray-600 max-w-sm text-sm leading-relaxed">{profile.bio}</p>
                         )}
@@ -252,10 +251,6 @@ export default function ProfilePage() {
                     <div className="space-y-3 max-w-md mx-auto">
                         <div className="bg-white rounded-2xl border border-gray-100 p-4 space-y-3">
                             <h3 className="font-semibold text-sm uppercase tracking-widest text-gray-400">Account</h3>
-                            <div className="flex justify-between items-center">
-                                <span className="text-sm">Email</span>
-                                <span className="text-sm text-gray-400">{user.email}</span>
-                            </div>
                             <div className="flex justify-between items-center">
                                 <span className="text-sm">Display Name</span>
                                 <span className="text-sm text-gray-400">{displayName}</span>
