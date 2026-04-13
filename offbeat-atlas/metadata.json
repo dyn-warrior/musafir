@@ -1,0 +1,10 @@
+
+{
+  "name": "Offbeat Atlas",
+  "description": "A premium travel platform for discovering hidden gems, joining community treks, and planning offbeat adventures with AI assistance.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}

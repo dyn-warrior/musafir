@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TravelBud App</title>
+<!-- Tailwind CSS v3 with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind CSS Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-dark': '#101418',
+            'brand-card': '#1C2127',
+            'brand-teal': {
+              'DEFAULT': '#49F5C9',
+              'dark': '#29D6A4'
+            },
+            'brand-gray': '#8A91A0',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'], // A font similar to the one in the UI
+          }
+        }
+      }
+    }
+  </script>
+<!-- Google Fonts (for Inter) -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Custom Styles -->
+<style data-purpose="layout-and-theme">
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .story-ring {
+      border: 2px solid transparent;
+      background-image: linear-gradient(#1C2127, #1C2127), linear-gradient(to right, #49F5C9, #29D6A4);
+      background-origin: border-box;
+      background-clip: content-box, border-box;
+    }
+    .active-nav-icon {
+      filter: brightness(0) saturate(100%) invert(83%) sepia(43%) saturate(988%) hue-rotate(99deg) brightness(98%) contrast(95%);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-gradient-to-b from-[#1C2127] to-[#101418]">
+<!-- This container simulates the mobile device screen -->
+<div class="mx-auto max-w-sm h-screen bg-[#101418] rounded-3xl shadow-2xl overflow-hidden flex flex-col relative" data-purpose="mobile-screen-wrapper">
+<!-- BEGIN: MainHeader -->
+<header class="bg-[#101418] px-4 pt-4" data-purpose="app-header">
+<!-- BEGIN: StatusBar -->
+<!-- END: StatusBar -->
+<!-- BEGIN: AppTitleBar -->
+<div class="flex justify-between items-center my-4" data-purpose="app-title-bar">
+<h1 class="text-white text-3xl font-semibold">TravelBud</h1>
+<!-- User Profile Avatar -->
+<div class="relative">
+<img alt="User profile picture" class="h-10 w-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7LNCN1AeynpnVq9851g2K3fGV_ktt5AEUSATTeV5xlbuPnZiwdMP5gQePvPjXqpavwvqrgRPlcIW8yGUOj3iVGXwlpnlsRHYJfVZI_cbRe1HQXa7S_42uFwdmBKyjdmgn__DVo0hQaBpj_ope41nOQvBWJuR1nEvnIM1AOwoBllS6F-PHDI5N9NoD6rH1kMRn4_yBs6hm7yZuVMfv3sSSPovFEqM9fCWfWaZ1z9Awi5JNJXqofnaJdBTolGu00yC5M7--Gc8ryfg"/>
+<span class="absolute top-0 right-0 block h-2.5 w-2.5 rounded-full bg-brand-teal ring-2 ring-[#101418]"></span>
+</div>
+</div>
+<!-- END: AppTitleBar -->
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: MainContent -->
+<main class="flex-1 overflow-y-auto px-4 pb-24" data-purpose="scrollable-content-area">
+<!-- BEGIN: UserStories -->
+<section class="mt-4" data-purpose="user-stories-section">
+<h2 class="text-white text-lg font-semibold">User Stories</h2>
+<!-- Horizontal scroll container for stories -->
+<div class="flex space-x-3 mt-3 overflow-x-auto pb-2 -mx-4 px-4" data-purpose="stories-list">
+<!-- Add My Story -->
+<div class="flex flex-col items-center space-y-2 flex-shrink-0" data-purpose="add-story-item">
+<button class="h-16 w-16 bg-brand-teal/20 rounded-full flex items-center justify-center border-2 border-dashed border-brand-teal/50">
+<span class="text-brand-teal text-3xl font-light">+</span>
+</button>
+<span class="text-white text-xs">My Story</span>
+</div>
+<!-- Story Item -->
+<div class="flex flex-col items-center space-y-2 flex-shrink-0" data-purpose="story-item">
+<div class="h-16 w-16 rounded-full story-ring p-0.5">
+<img alt="Alex_Explore's story" class="h-full w-full rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxL407TgvVGjKXys6dLgN3RV2MZX19GYYNJ9TtmnkHxaZk3vjsrJ-beP9EiMYcfqWvInQsrWbY9mPgrUq-wBa6ssHmakseU6u8x_cdSJG5wd_grFM8p7lTrdJPyKatgZJ4zzZv1oSk0GEe-FCm0eIwhv0oaapvQ-WsmHbil3J4kd2FPX_eICA-8P8-TNpurcCkWFSV0LGetxlVjNPR5SpAzI1mhSH_4FdZ4vE-GsDPjbK2cdzXW-MgZH_vdsNGykjIqWl6vwMRq8Q"/>
+</div>
+<span class="text-white text-xs">Alex_Explore</span>
+</div>
+<!-- Story Item -->
+<div class="flex flex-col items-center space-y-2 flex-shrink-0" data-purpose="story-item">
+<div class="h-16 w-16 rounded-full story-ring p-0.5">
+<img alt="Mia_Trips's story" class="h-full w-full rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFOkuL84LJnM_50Ile4F4tzjZa1ozOyfG47EpaNWDrP1nf7t-EOoUfAXbhVZEv9lqfV5KDVI38GQUwmXP_0WwiJACP0lRXk2PimKAHkawdl0kvEiwiYxZ1MN0yiT2yFzJgBqlOIlmU-drh89JxBwb14IJsq6KB-TCyv7_ykQs-3Fq8LHvUUckt6a4qQLjyrLh4Z0HSyRML1DBKha8M_48rjTpE1sH-J-dUiy3xuLWKbk50o--JFmi-fxEYYvxmxoyuCSszttgcxos"/>
+</div>
+<span class="text-white text-xs">Mia_Trips</span>
+</div>
+<!-- Story Item -->
+<div class="flex flex-col items-center space-y-2 flex-shrink-0" data-purpose="story-item">
+<div class="h-16 w-16 rounded-full story-ring p-0.5">
+<img alt="Nomad_Jay's story" class="h-full w-full rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgHLoooSRXmu6z6Kw37xhSFAtCUhkbaxiv5d4a-JW_dszswJ0lWcigd-1F32cnBS1o7FEILQZy2w-tgqKUGMygfVP1-_O9M8AiKfGDToDhzUYHmZkSU8AZ7_z7z4qM_gHJtT4zPVOe-S-KPfNAxn8cUGS8u6etMgujOoxdReAk5VicNgjfyO5AYFKXjht4TEyQ8vhjcI_h9D8vjMWkNSgNdtK1u0VlYoGggSjSlRFwM5Op4txpqovh8D6Vz-2XOs4fhH7Eppawgpc"/>
+</div>
+<span class="text-white text-xs">Nomad_Jay</span>
+</div>
+<!-- Story Item -->
+<div class="flex flex-col items-center space-y-2 flex-shrink-0" data-purpose="story-item">
+<div class="h-16 w-16 rounded-full story-ring p-0.5">
+<img alt="Backpacker_Li's story" class="h-full w-full rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjYgOOBgy3c_ysT8_riwxZvogv-gWhzTbtRiTsNuJcgqguKx-X6O4uXZJ3bT1_9d0GRrLISqVMPaNMb9_QNuKlP3Kr1Rs2Bl4lx5fdT5niF1xH9SMV-hIIptGptNzb4PIZGXD66szn3V_bPkfGWi-WphRB_HBa5l7zNU3uYPlk7xSE_oF1GOmCtTi61uv72A8dMYnPSuUfAq8N35tATmS7O9kDhY0EZGk-bD1OkPcN6rA0AvJsa33TyRZ8gXZAD-4ko4aEJUgmYHY"/>
+</div>
+<span class="text-white text-xs">Backpacker_Li</span>
+</div>
+</div>
+</section>
+<!-- END: UserStories -->
+<!-- BEGIN: FeedTabs -->
+<nav class="flex mt-6 border-b border-white/10" data-purpose="feed-tabs">
+<!-- Active Tab -->
+<a class="flex-1 text-center py-2 text-brand-teal font-bold border-b-2 border-brand-teal" href="#">All</a>
+<!-- Inactive Tab -->
+<a class="flex-1 text-center py-2 text-brand-gray font-medium" href="#">Following</a>
+</nav>
+<!-- END: FeedTabs -->
+<!-- BEGIN: Feed -->
+<div class="space-y-4 mt-4" data-purpose="posts-feed">
+<!-- BEGIN: PostCard1 -->
+<article class="bg-brand-card rounded-2xl p-3" data-purpose="post-card">
+<!-- Card Header -->
+<div class="flex items-center justify-between mb-3" data-purpose="post-header">
+<div class="flex items-center space-x-3">
+<img alt="Wanderlust_Sam profile picture" class="h-10 w-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7LNCN1AeynpnVq9851g2K3fGV_ktt5AEUSATTeV5xlbuPnZiwdMP5gQePvPjXqpavwvqrgRPlcIW8yGUOj3iVGXwlpnlsRHYJfVZI_cbRe1HQXa7S_42uFwdmBKyjdmgn__DVo0hQaBpj_ope41nOQvBWJuR1nEvnIM1AOwoBllS6F-PHDI5N9NoD6rH1kMRn4_yBs6hm7yZuVMfv3sSSPovFEqM9fCWfWaZ1z9Awi5JNJXqofnaJdBTolGu00yC5M7--Gc8ryfg"/>
+<div>
+<p class="text-white font-semibold text-sm">Wanderlust_Sam</p>
+<div class="flex items-center text-brand-gray text-xs">
+<span>Machu Picchu, Peru</span>
+</div>
+</div>
+</div>
+<button class="text-brand-gray self-center">
+<i class="fas fa-ellipsis-h text-brand-gray"></i>
+</button>
+</div>
+<!-- Post Image -->
+<div class="aspect-w-4 aspect-h-4">
+<img alt="View of Machu Picchu" class="rounded-xl object-cover w-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwvInI3xEkIZABgvFg5SXhBatP6Bea2C7cHsLG4LvnqMkcCE0Iebc5hFeWMHeu75BE8O1TGaf-6gf76NSYCgAnD60WYfrfk_WiUNKWfpatRWB3OGLx_jjI8PJLLALlBlPthgC1tZvNR-uj6IVae53dfG39QemqKH8pkIMJ6iXIu-45-n3TZy7pvJXwWa-lQQinnbVGand7j2HcQ-DGPFVMb0dMzs_dcH2VTh84XVvNtI7LdXykWP36nxCwXlhemFtUUV-7bZwctck"/>
+</div>
+<!-- Action Bar -->
+<div class="flex items-center text-white py-3" data-purpose="post-actions"><div class="flex items-center space-x-4"><button class="flex items-center space-x-1.5"><i class="fas fa-heart text-brand-teal text-xl"></i> <span class="text-sm">1.2K</span></button><button class="flex items-center space-x-1.5"><i class="fas fa-comment text-white text-xl"></i> <span class="text-sm">45</span></button><button><i class="fas fa-paper-plane text-white text-xl"></i></button></div><div class="ml-auto"><button><i class="fas fa-bookmark text-white text-xl"></i></button></div></div>
+<!-- Caption -->
+<p class="text-white text-sm leading-relaxed" data-purpose="post-caption"><span class="font-semibold">Wanderlust_Sam</span> Finally made it to this incredible view! The trek was challenging but totally worth it. Can't wait to explore more... <a class="text-brand-teal font-semibold" href="#">more</a></p>
+<!-- View Comments -->
+<a class="text-gray-500 text-xs mt-1 block" href="#">View all 45 comments</a>
+</article>
+<!-- END: PostCard1 -->
+<!-- BEGIN: PostCard2 -->
+<article class="bg-brand-card rounded-2xl p-3" data-purpose="post-card">
+<!-- Card Header -->
+<div class="flex items-center justify-between mb-3" data-purpose="post-header">
+<div class="flex items-center space-x-3">
+<img alt="Eco_Traveler profile picture" class="h-10 w-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrk6utS6sha3E1k89mMlCelzUEEE-KOfdJcDhpIFN2XHjPEBF3zhwQ_jMZv9v8vAEI3Wupju8LsFPG4x7EzJjYYWbaQlDwTJxbPYY6NdQFaeAGt2GjfCZUEvvg32zf-RxiXwHN59jOmRHWacpBtbzFMJkBqGwiFSR4rfH-Xbj9h5gLNvozTOsqgHqw9zkBJpJJ8YbZpqX5q31ER3mEXh_PDOE21KkjrbkUt_MyIbAdF8DDRL4cKonK1NODJ_xblI3P-up40ZnLSGo"/>
+<div>
+<p class="text-white font-semibold text-sm">Eco_Traveler</p>
+<div class="flex items-center text-brand-gray text-xs">
+<span>Bali, Indonesia</span>
+</div>
+</div>
+</div>
+<button class="text-brand-gray self-center">
+<i class="fas fa-ellipsis-h text-brand-gray"></i>
+</button>
+</div>
+<!-- Post Image (Reel) -->
+<div class="aspect-w-16 aspect-h-9 relative">
+<img alt="Sunset view in Bali" class="rounded-xl object-cover w-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApznEuxJXjyTy6C4akS5CyINHdfukMaIcIteAI18ctjCUa15qKnM7w3nAZzXH3_7KxCL9L8a9AEU3GdcgXK-zy2F-SByzDKBfHvdCquu7orjMzZJTIcj0r1Z1yzB37u_JXL-F1hTf3EvBi53bXfC7Ld_EYBcgJDJRCJ2MUcAR4BTG9_D9MjKv8qSRGPAhJ4iXKnz7aedWHGTNfWY9bGwcLyTOcI_-kC5oJcYArayE7g6oJgrgW7INB5Sl9J_iFqNACWiLJLHsUqSE"/>
+<div class="absolute top-2 left-2 bg-black/50 p-1 rounded">
+</div>
+</div>
+<!-- Action Bar (hidden for brevity in this card as per image) -->
+<!-- Caption (hidden for brevity) -->
+</article>
+<!-- END: PostCard2 -->
+</div>
+<!-- END: Feed -->
+</main>
+<!-- END: MainContent -->
+<!-- BEGIN: FloatingActionButton -->
+<button class="absolute bottom-24 right-6 h-14 w-14 bg-brand-teal rounded-full flex items-center justify-center shadow-lg shadow-brand-teal/30" data-purpose="floating-action-button">
+<span class="text-[#101418] text-4xl font-light">+</span>
+</button>
+<!-- END: FloatingActionButton -->
+<!-- BEGIN: BottomNavigationBar -->
+<nav class="absolute bottom-0 left-0 right-0 bg-[#1C2127] h-20 flex justify-around items-start pt-2 rounded-t-2xl border-t border-white/10" data-purpose="bottom-navigation">
+<!-- Nav Item - Active -->
+<a class="flex flex-col items-center space-y-0.5 text-brand-teal" data-purpose="nav-item-active" href="#">
+<div class="h-8 w-8 flex items-center justify-center">
+<i class="fas fa-home text-2xl"></i>
+</div>
+<span class="text-xs font-semibold">Home</span>
+</a>
+<!-- Nav Item -->
+<a class="flex flex-col items-center space-y-1 text-brand-gray" data-purpose="nav-item" href="#">
+<div class="h-8 w-8 flex items-center justify-center">
+<i class="fas fa-search text-2xl"></i>
+</div>
+<span class="text-xs font-semibold">Explore</span>
+</a>
+<!-- Nav Item -->
+<a class="flex flex-col items-center space-y-1 text-brand-gray" data-purpose="nav-item" href="#">
+<div class="h-8 w-8 flex items-center justify-center">
+<i class="fas fa-plane-departure text-2xl"></i>
+</div>
+<span class="text-xs font-semibold">Group Chat</span>
+</a>
+<!-- Nav Item -->
+<a class="flex flex-col items-center space-y-1 text-brand-gray" data-purpose="nav-item" href="#">
+<div class="h-8 w-8 flex items-center justify-center">
+<i class="fas fa-map-marker-alt text-2xl"></i>
+</div>
+<span class="text-xs font-semibold">Go Out</span>
+</a>
+<!-- Nav Item -->
+<a class="flex flex-col items-center space-y-1 text-brand-gray" data-purpose="nav-item" href="#">
+<div class="h-8 w-8 flex items-center justify-center">
+<i class="fas fa-map-marker-alt text-2xl"></i>
+</div>
+<span class="text-xs font-semibold">Place Wiki</span>
+</a>
+</nav>
+<!-- END: BottomNavigationBar -->
+</div>
+</body></html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Group Chats</title>
+<!-- Tailwind CSS v3 with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Font Awesome for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<!-- BEGIN: Tailwind Configuration -->
+<script data-purpose="tailwind-config">
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'], // A common modern sans-serif font
+            },
+            colors: {
+              'brand-dark': '#111111',
+              'brand-card': '#1e1e1e',
+              'brand-text-light': '#9ca3af', // gray-400
+              'brand-text-dim': '#6b7280',   // gray-500
+              'brand-accent': '#2dd4bf',    // teal-400 (matches the notification dot)
+            }
+          }
+        }
+      }
+    </script>
+<!-- END: Tailwind Configuration -->
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="typography-and-base">
+      /* Added a generic font-family from Google Fonts as a fallback */
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap');
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+    </style>
+<!-- END: Custom Styles -->
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-brand-dark text-white">
+<div class="max-w-md mx-auto flex flex-col h-screen" data-purpose="mobile-app-wrapper" id="mobile-app-container">
+<!-- BEGIN: MainHeader -->
+<header class="p-4 pt-8" data-purpose="page-header">
+<div class="flex justify-between items-center">
+<!-- Page Title -->
+<h1 class="text-4xl font-extrabold tracking-tight">Group Chats</h1>
+<!-- Header Actions -->
+<div class="flex items-center space-x-4">
+<i class="fas fa-search text-xl text-gray-300"></i>
+<img alt="User Profile Picture" class="w-9 h-9 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeIJ7m8q0AYW5OTtTQ1OUPh07gL4s8EVvU-gfx2ZAzLRYb6VR69KM8D5zqLTD8-x-U4t-qnqe9TQ44i-HC1jPpTuEGfnb0dgsVpgWLoFZ4rhbELJcqUJ_eiY9JIFUQjCgV_Vwu80ZqpHqiFA-SGFsa2NFhTqhiD5gbz_zgd8xFu58luGEvCvFUnHzOhd2_QvlwkdUQZgwu2xEWCH18BDCQiK4auVQx3hFqN_zS1FvInhamJSoGyQzEwHmNY_8eBPmxB8zTGCDFVlg"/>
+</div>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: ChatList -->
+<main class="flex-grow p-4 overflow-y-auto" data-purpose="chat-list-container">
+<div class="space-y-3">
+<!-- Chat Item 1: Manali -->
+<div class="bg-brand-card rounded-xl p-3 flex items-center space-x-4" data-purpose="chat-list-item">
+<img alt="Manali group icon" class="w-12 h-12 rounded-full flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtSvPD7AK8zLyUM9jeONC8o2AorFl_w-Wcw_-Y_BF_ogCBj-qKKSkRfiyJf3PXxFivTyKAw_QWB2CfMnsD1WwrVnGJn-Wg21e3lHplkohC-dRwVxCWUTx0aKO12PCZbzkARSfzOa5U5dFcAbMm8abh4RCVD7rDMTuxk14LXA4iNU_dYE1EADHuCO25hTG5paRrxW9gUAM36ZG_DwTHLQKjCT81zInHUGt1pzs50gxAgPrnHsRhpvyE2vnzcPxGEaAQsS_wBMCBTsA"/>
+<div class="flex-grow">
+<p class="font-bold text-white">r/Manali</p>
+<p class="text-sm text-brand-text-light">Leo: Best hostel recommendations?</p>
+</div>
+<div class="text-right flex-shrink-0">
+<p class="text-xs text-brand-text-light">10:35 AM</p>
+<div class="w-2.5 h-2.5 bg-brand-accent rounded-full ml-auto mt-2 shadow-[0_0_6px_rgba(45,212,191,0.8)]"></div>
+</div>
+</div>
+<!-- Chat Item 2: Pune -->
+<div class="bg-brand-card rounded-xl p-3 flex items-center space-x-4" data-purpose="chat-list-item">
+<img alt="Pune group icon" class="w-12 h-12 rounded-full flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtdxPoXwt-WN6KK8w6Md1Z5_KuOre_3otuOBfEoNFVmTYif7e0GdWyu4-g32RTq8Vhd45DbMUXG_8A14j_Yw7LVO-cRAibXa3pdg93AWTejl4daxoHn1eoU9_Svhc4W6CFhqVh_GUCIVOaHx8ddzpdv2U-q6SsXTGjRPIwn68Z2huXssO63J9sl80MsK3uBWo_U0-55gfaIVr6v3OIOURahDFt6WDfkqtNo6mLT0wAGfmHp3spUkR7u1I9UPmIFjLHTsMFlhgROUI"/>
+<div class="flex-grow">
+<p class="font-bold text-white">r/Pune</p>
+<p class="text-sm text-brand-text-light">Sarah: Is the food festival this weekend?</p>
+</div>
+<div class="text-right flex-shrink-0">
+<p class="text-xs text-brand-text-light">10:30 AM</p>
+<div class="w-2.5 h-2.5 bg-brand-accent rounded-full ml-auto mt-2 shadow-[0_0_6px_rgba(45,212,191,0.8)]"></div>
+</div>
+</div>
+<!-- Chat Item 3: Jibhi -->
+<div class="bg-brand-card rounded-xl p-3 flex items-center space-x-4" data-purpose="chat-list-item">
+<img alt="Jibhi group icon" class="w-12 h-12 rounded-full flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSdB8EH2jftxfLK1Mc4blIW8JfQL0oBBVRwqol9A6U05maA2kRrcXBOmGS7hs2vAlRWSkJgkeHhe4lkhO679_NWUyhZhJfWgFOscCwT397tw58hIP8n0pzMkonZW7ZkN9kBDhKCl4LVu9l1NnCfv7YUwHalPLpK4gUTg1_suUQiE3V84Kl-TmfH4CKGFlcc2fZDYe0aX1WhrRMAMMnyFPY6E2yaVUC3KmRnNUDsXM-3d4SAYZ5Y6S7F3bLI03OTWiIXBw_resewWE"/>
+<div class="flex-grow">
+<p class="font-bold text-white">r/Jibhi</p>
+<p class="text-sm text-brand-text-light truncate max-w-[150px] sm:max-w-none">Alex: Shared the new itinerary, check it out.</p>
+</div>
+<div class="text-right flex-shrink-0">
+<p class="text-xs text-brand-text-light">10:20 AM</p>
+</div>
+</div>
+<!-- Chat Item 4: backpacker -->
+<div class="bg-brand-card rounded-xl p-3 flex items-center space-x-4" data-purpose="chat-list-item">
+<img alt="Backpacker group icon" class="w-12 h-12 rounded-full flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsSaZ6M9QJd2nSxgj7UThRNjAfdoomMtcWJlBApa7mnQcMAf06Ti5OWCPDl8MX-ViyYSATBHETX2iq8yoJmnrzAku-h740x8bxY7WJ2KRwi-GN8_6rhyQnCbd2hdf18wBLr2tyDVENvhczYKvha7Cnn7Aj_2Cl4hMjBCB3RNoyPIONcLPHP1coNxWhYWa-klsfYfVRSfYnxqBGq2kHvo1cnVpD4YshSoEAgnuec7vcz_OlvQskMWoaalzApQ-RMsn9PSqyYr9gXME"/>
+<div class="flex-grow">
+<p class="font-bold text-white">r/backpacker</p>
+<p class="text-sm text-brand-text-light">Moderator: Welcome new members! Introduce yourselves.</p>
+</div>
+<div class="text-right flex-shrink-0">
+<p class="text-xs text-brand-text-light">Yesterday</p>
+</div>
+</div>
+<!-- Chat Item 5: Himalayas -->
+<div class="bg-brand-card rounded-xl p-3 flex items-center space-x-4" data-purpose="chat-list-item">
+<img alt="Himalayas group icon" class="w-12 h-12 rounded-full flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDrmXxb9GVooXzpDW0BOUisQB-8QR2RZ9THR277i9sZ0Bjfs5CyS7O-LO5JhFizA9qYwPvZHSJOCvXd4tS-VbkVcSEjtL_CS9dNxd02IXRvHX7IL0Iv2DQzos_TfmqU4i58y78jTqfiqdULK6Pz13TT0aRt1pirideLo3PUO2NFfk9c4e0iuUgqxhkNzJk3H_jVPBjf-GYfK4S3onO8fzgRCdNMv9y6goOabm4_7HKJIMrzzzuB7qSMpB3xjdD1qM6mVK4svuTG_Q"/>
+<div class="flex-grow">
+<p class="font-bold text-white">r/Himalayas</p>
+<p class="text-sm text-brand-text-light">Leo: Loan the soumceast Himalayas?</p>
+</div>
+<div class="text-right flex-shrink-0">
+<p class="text-xs text-brand-text-light">10:06 AM</p>
+</div>
+</div>
+<!-- Chat Item 6: Delhi -->
+<div class="bg-brand-card rounded-xl p-3 flex items-center space-x-4" data-purpose="chat-list-item">
+<img alt="Delhi group icon" class="w-12 h-12 rounded-full flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE9wQgnfJy4Z2898JVFcALQJWFxrDFFLdaZOjRnT7vb_6ulJ-ZTZbKD0ZDAHB8ipG2So1NXcm8BqpTCg2SMo7QkS4g2aaarp2ao6tlf-N7UnrvhikcWxyUny9UFRMfFO4TwIlrktTTkN3A-OsZ8q41ifMkBgnU-aQqnP6snFAn9Xiu9pxH6GtltCWXPm4wPp1zhNI8_3m8PphTuQZy4k91THqVaNXbLgDWt_7cN6cLeLuegPsKyFEvwZ9PehDRyfLE79nFgQnPDck"/>
+<div class="flex-grow">
+<p class="font-bold text-white">r/Delhi</p>
+<p class="text-sm text-brand-text-light">Alex: Plans your new Delhi!</p>
+</div>
+<div class="text-right flex-shrink-0">
+<p class="text-xs text-brand-text-light">11:07 AM</p>
+</div>
+</div>
+<!-- Chat Item 7: Goa -->
+<div class="bg-brand-card rounded-xl p-3 flex items-center space-x-4" data-purpose="chat-list-item">
+<img alt="Goa group icon" class="w-12 h-12 rounded-full flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIu1t6N3iYhvGVlNc-KfdNSLoEQtC_Qs7f971-HUK2oIHxN-EHglGDzmDLMQpOInEiEeep8LAZahrcurgs0ssecsJWcneZnxRuwLM97Bdg_dEwKj7GRQhOAL-3PHtl6shVSAMRBFRcJIORwrJMdhcHU5XAoR3uUUwj7Z-kvmZUrOKltqiIFk1znN6AO20yXLNCS-6dYBcmxK55wy2BOrEpyyQ5re2jhr2Z7QqkGYZpi6M8dSQbo-OGt5M1_BFUDOKa6CflXMnBFwI"/>
+<div class="flex-grow">
+<p class="font-bold text-white">r/Goa</p>
+<p class="text-sm text-brand-text-light">Alex: Plans your new Delhi!</p></div>
+<div class="text-right flex-shrink-0">
+<p class="text-xs text-brand-text-light">11:03 AM</p>
+</div>
+</div>
+</div>
+</main>
+<!-- END: ChatList -->
+<!-- BEGIN: FooterNavigation -->
+<footer class="bg-brand-card border-t border-gray-700/50" data-purpose="footer-navigation-bar">
+<nav class="flex justify-around items-center h-20 text-brand-text-dim text-xs">
+<!-- Nav Item: Home -->
+<a class="flex flex-col items-center justify-center space-y-1" href="#">
+<i class="fas fa-home text-2xl"></i>
+<span>Home</span>
+</a>
+<!-- Nav Item: Explore -->
+<a class="flex flex-col items-center justify-center space-y-1" href="#">
+<i class="far fa-compass text-2xl"></i>
+<span>Explore</span>
+</a>
+<!-- Nav Item: Group Chat (Active) -->
+<a class="flex flex-col items-center justify-center space-y-1 text-brand-accent" href="#">
+<div class="relative w-12 h-8 flex justify-center items-center">
+<div class="absolute w-12 h-8 bg-brand-accent/20 rounded-full"></div>
+<i class="fas fa-comment-dots text-2xl"></i>
+</div>
+<span class="font-semibold">Group Chat</span>
+</a>
+<!-- Nav Item: Go Out -->
+<a class="flex flex-col items-center justify-center space-y-1" href="#">
+<i class="fas fa-door-open text-2xl"></i>
+<span>Go Out</span>
+</a>
+<!-- Nav Item: Place Wiki -->
+<a class="flex flex-col items-center justify-center space-y-1" href="#">
+<i class="fas fa-map text-2xl"></i>
+<span>Place Wiki</span>
+</a>
+</nav>
+</footer>
+<!-- END: FooterNavigation -->
+</div>
+</body></html>

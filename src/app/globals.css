@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+:root {
+  /* Base Colors - Cream/Off-White Theme */
+  --background: #FDFBF7;
+  --foreground: #1A1A1A;
+
+  /* Primary: Terracotta */
+  --primary: #C07A58;
+  --primary-foreground: #ffffff;
+
+  /* Secondary: Teal (Accent) */
+  --secondary: #2A9D8F;
+  --secondary-foreground: #ffffff;
+
+  /* Accent: Muted Gold/Yellow */
+  --accent: #E9C46A;
+  --accent-foreground: #1A1A1A;
+
+  /* Muted */
+  --muted: #F3F4F6;
+  --muted-foreground: #6B7280;
+
+  /* Card */
+  --card: #FFFFFF;
+  --card-foreground: #1A1A1A;
+
+  /* Border */
+  --border: #E5E7EB;
+  --input: #E5E7EB;
+  --ring: #C07A58;
+
+  /* Brand Specifics */
+  --brand-cream: #FDFBF7;
+  --brand-terracotta: #C07A58;
+  --brand-teal: #2A9D8F;
+  --brand-dark: #1A1A1A;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-brand-cream: var(--brand-cream);
+  --color-brand-terracotta: var(--brand-terracotta);
+  --color-brand-teal: var(--brand-teal);
+  --color-brand-dark: var(--brand-dark);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* Optional: Dark mode override if needed, but keeping Light Theme as default for this design */
+  /* :root { ... } */
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}

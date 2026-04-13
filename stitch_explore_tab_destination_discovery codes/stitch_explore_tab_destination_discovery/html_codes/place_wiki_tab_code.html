@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Place Wiki</title>
+<!-- Tailwind CSS v3 with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Custom Font: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- BEGIN: Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            inter: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            'brand-dark': '#1C1C1E',
+            'brand-surface': '#2C2C2E',
+            'brand-accent': '#22D4B2',
+            'brand-accent-dark': '#1a9c82',
+            'brand-text-primary': '#FFFFFF',
+            'brand-text-secondary': '#EBEBF599', // 60% opacity white
+            'brand-text-tertiary': '#b0b0b5',
+          },
+        }
+      }
+    }
+  </script>
+<!-- END: Tailwind Configuration -->
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="layout">
+    /* Custom scrollbar styles for horizontal scrolling sections */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none; /* Hide scrollbar for Chrome, Safari and Opera */
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+  </style>
+<!-- END: Custom Styles -->
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-brand-dark text-brand-text-primary font-inter">
+<div class="max-w-md mx-auto min-h-screen flex flex-col" id="app-container">
+<!-- BEGIN: MainHeader -->
+<header class="p-4 pt-6 flex justify-between items-center">
+<h1 class="text-2xl font-bold">Place Wiki</h1>
+<!-- Search Icon -->
+<svg class="h-6 w-6 text-brand-text-primary" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: SearchBar -->
+<section class="px-4 py-2">
+<div class="relative">
+<!-- Search Icon inside the bar -->
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<svg class="h-5 w-5 text-brand-dark opacity-80" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<!-- Input field -->
+<input class="w-full text-brand-dark border-none rounded-full py-3 pl-11 pr-4 focus:ring-2 focus:ring-brand-accent-dark bg-brand-accent placeholder-gray-800" placeholder="Search destinations, tips..." type="search"/>
+</div>
+</section>
+<!-- END: SearchBar -->
+<main class="flex-grow overflow-y-auto pb-24">
+<!-- BEGIN: PopularDestinations -->
+<section class="py-4" data-purpose="popular-destinations-section">
+<h2 class="px-4 text-xl font-bold mb-3">Popular Destinations</h2>
+<!-- Horizontally scrollable container -->
+<div class="flex space-x-4 overflow-x-auto no-scrollbar px-4">
+<!-- Destination Card: Tokyo -->
+<div class="flex-shrink-0 w-40 h-52 relative rounded-2xl overflow-hidden" data-purpose="destination-card">
+<img alt="Busy street in Tokyo at night" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBp9Z7GpzUrIBK0QgQgs7lf0f5xhSqucvfe_aJtwQ0GlBrEGVGIiw5icpflD2R4Scz_yIxbOMVwhcIKiBVbe7xegQ3WvDXM5K4BBKDPQh5-lVgcBi0JI-Cs_THOrBhJneQyt7QGPO05B3S6v-tYeiqCQYztzhLBPdPga8ja0OVS3V_tocFhkg-LhmxccM8A0GlZ7XkNG6tWEHsPFVlI8W2X01woxLJC_i3HWJ_sweY6ES2Bk-43TxyyGut9IG9Xv3Y4n6Efw2-y_ZQ"/>
+<div class="absolute bottom-0 left-0 p-3 text-white w-full"><div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<h3 class="font-bold text-xl">Tokyo</h3>
+<span class="text-xs bg-brand-accent text-brand-dark font-semibold px-2 py-1 rounded-full">Backpacker Friendly</span>
+</div>
+</div>
+<!-- Destination Card: Kyoto -->
+<div class="flex-shrink-0 w-40 h-52 relative rounded-2xl overflow-hidden" data-purpose="destination-card">
+<img alt="Fushimi Inari Shrine in Kyoto" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwI_w-CIr-iRsnm4aAtIDno8SaBVjg_8k_ZVMlHe3OaosI1rCdeq0VH0c7jSkFDkceumsYjN-mjpG_z-cVzHhY5hKRjVkNXq0GbgaQoAloI5ibxnPnXlztyE7aJ_hrIf0j4Hj-VC41yxIX9obR7VsyHjLk7_VB20xOzTxc5wVEfTnegKJNalHXSLWc6bUypWZE5oQbNC66SgIURniu9ptLVn2EAXeECZlt6pL_NaSFLahekS51TUqt2HIaHP4kp8XVVcHi1mgAkIo"/>
+<div class="absolute bottom-0 left-0 p-3 text-white w-full"><div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<h3 class="font-bold text-xl">Kyoto</h3>
+<span class="text-xs bg-brand-accent text-brand-dark font-semibold px-2 py-1 rounded-full">Backpacker Friendly</span>
+</div>
+</div>
+<!-- Destination Card: Barcelona -->
+<div class="flex-shrink-0 w-40 h-52 relative rounded-2xl overflow-hidden" data-purpose="destination-card">
+<img alt="Park Güell in Barcelona" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLkRyyeMbZlLN_xgdkSQnEfZPKP3r2PnXtcC-03OZRNSJd40jB26fCUloyiy43kl-SuJkv9gEi0lTsaaBkRubJQASq-TuA0sBOYD70IAVnUWxlASNKkJ_GuKCNcsr3pWUGZf91fZ0olYS2U2Hcd9wVGKE69Sl1-_pmFbEi8vDhJasFRbQDyfAX3ZCa_IvQBpG95qylFcfW9ztMGVNOhVv6Y8Rw5VykMwOIPMWKtLUe0gcpF3x-tPgFMsks8-i6XIHLmfd0mqQ7oOM"/>
+<div class="absolute bottom-0 left-0 p-3 text-white w-full"><div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<h3 class="font-bold text-xl">Barcelona</h3>
+<span class="text-xs bg-brand-accent text-brand-dark font-semibold px-2 py-1 rounded-full">Backpacker Friendly</span>
+</div>
+</div>
+</div>
+</section>
+<!-- END: PopularDestinations -->
+<!-- BEGIN: CategoryFilters -->
+<section class="py-4" data-purpose="category-filters-section">
+<h2 class="px-4 text-xl font-bold mb-3">Category Filters</h2>
+<!-- Horizontally scrollable container for filters -->
+<div class="flex space-x-3 overflow-x-auto no-scrollbar px-4">
+<button class="flex-shrink-0 bg-brand-accent text-brand-dark font-semibold px-5 py-2 rounded-full">Cities</button>
+<button class="flex-shrink-0 bg-brand-surface text-brand-text-secondary font-semibold px-5 py-2 rounded-full">Nature</button>
+<button class="flex-shrink-0 bg-brand-surface text-brand-text-secondary font-semibold px-5 py-2 rounded-full">Culture</button>
+<button class="flex-shrink-0 bg-brand-surface text-brand-text-secondary font-semibold px-5 py-2 rounded-full">Food</button>
+<button class="flex-shrink-0 bg-brand-surface text-brand-text-secondary font-semibold px-5 py-2 rounded-full">Budget Tips</button>
+</div>
+</section>
+<!-- END: CategoryFilters -->
+<!-- BEGIN: MainContentCard -->
+<section class="px-4 py-2" data-purpose="main-content-card">
+<div class="bg-brand-surface rounded-3xl overflow-hidden">
+<!-- Card Header Image -->
+<div class="relative h-48">
+<img alt="Traditional street in Kyoto" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2NRQQVGsZ5m2rEt3clcQmNgBZjTjx9Z70H-PKjymxiU3p_35Ch6aAvAFTHUh4Rhf_FXov1QbyLJrRKrjcV3Im_YMtcLIYlOEBKQDpxyGha0WinnCF_E6j4Hkdo1jmot3ZRWqIm4cV28KLvJolAdoNelPpoMJU-y79FH2hQjq2o8YNs_MgRgCGnlPcGh_jSv5cxxCbPQxhRuqNwF7PVGJmM348NEGeLKxPHS_HRmDnARDGNnyy7U0D0l1-W3yoUg-j8AEQhG5O7TM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+<h2 class="absolute bottom-4 left-4 text-3xl font-bold">Kyoto, Japan</h2>
+</div>
+<!-- Card Body Content -->
+<div class="p-4">
+<!-- Overview Section -->
+<div class="mb-6">
+<h3 class="text-lg font-semibold mb-2">Overview</h3>
+<p class="text-brand-text-secondary text-sm leading-relaxed">
+                Kyoto, Japan is dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor into euiinod tenritea of labore of dolore as magna aliqua. This may.travewn to pandemic motenr. Ouis tamac experience ans anat supportvc in their thinns svihir, you have prouinned qoeonr and represent fiait tn insvnroan neoarations.
+              </p>
+</div>
+<!-- Details Grid -->
+<div class="grid grid-cols-2 gap-4">
+<!-- Left Column: Things to do & Best time -->
+<div class="space-y-4">
+<h3 class="text-lg font-semibold">Things to Do</h3>
+<ul class="space-y-3 text-sm text-brand-text-secondary">
+<li class="flex items-center">
+<svg class="h-5 w-5 mr-3 text-brand-accent" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span>Locati nsk trewrt</span>
+</li>
+<li class="flex items-center">
+<svg class="h-5 w-5 mr-3 text-brand-accent" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21a9 9 0 100-18 9 9 0 000 18z" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 3v1m0 16v1m8-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span>Explore on mimity</span>
+</li>
+<li class="flex items-center">
+<svg class="h-5 w-5 mr-3 text-brand-accent" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span>Enjoy the ball trane</span>
+</li>
+</ul>
+<div class="pt-2">
+<h3 class="text-lg font-semibold mb-2">Best Time to Visit</h3>
+<div class="flex items-center text-sm text-brand-text-secondary">
+<svg class="h-5 w-5 mr-3 text-brand-accent" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<!-- Content for best time to visit can go here -->
+<span>Spring, Autumn</span></div>
+</div>
+</div>
+<!-- Right Column: Map & Gallery -->
+<div class="space-y-2">
+<!-- Map Image -->
+<div class="relative">
+<img alt="Map of Kyoto" class="rounded-2xl w-full h-24 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBw92rbZitYqxULJuc9IJJ629v4SfaxNICcrm4GiwyNdVkPvo1e-y6S8UQCKLmNTY84FhLt3cL5Wyzq-4xbtcmZGy8za5A5GK9kqyViKjMUPhtzRodMrhshWaPSjna1KDVYkQ897czVQ_giWc4Yo17MqKSuUINAHeZUQalniDBSWG33eIWa7mbHtQunYIF8EVDyK_iB6PXCsotZA8LXQaii-KLu3UJL_YDiwDfDJPlxaW5YuVT_D0E2_txyqAUX_GRUtXlc0SLCprU"/>
+<!-- Map Pin Icon -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+<svg class="w-8 h-8 text-brand-accent drop-shadow-lg" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 005.169-4.418 9.577 9.577 0 002.178-6.17c0-5.3-4.298-9.599-9.599-9.599S2.25 6.45 2.25 11.75c0 2.348.83 4.543 2.178 6.17a16.975 16.975 0 005.169 4.418zM12 15.75a4 4 0 100-8 4 4 0 000 8z" fill-rule="evenodd"></path>
+</svg>
+</div>
+</div>
+<!-- Gallery Images -->
+<div class="grid grid-cols-3 gap-2">
+<img alt="Kyoto gallery image 1" class="rounded-lg w-full aspect-square object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy_V3dJojQMB9eI4vKEl0Z47Qj_bpWmgJ-em7S10PGCCfBdu1LKLxrJJxfFmVq7eANb3i7cqFgvPpsqu4Q7VU7ousGobl_jj6soBSXOreCt9aoiqbAYECW77Zyo1Wo53h5llZ0FXjRLekTT-_SNJx4CrvoIi4nwP62TgesgOsa2RMoTcycQhUtXjBXA5RI2aUxWr7ITzkgx8rpFb3-OCDZaJp7JtB6rONZ_ltmem992XFToZtrXMjPiZ3SDkJOShTgnYCqNGueS-0"/>
+<img alt="Kyoto gallery image 2" class="rounded-lg w-full aspect-square object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtGVsb2dr0js3SVr2LNGUT0z2MfPGpOWNqMO8rU1LpkVei0HbSVLzOBLDbOcsBjR9vGNIOPihhuGW1tYQeiT3HM0ZTd7n3nEmhKP3hO47k27-MwQz4xWsQPDE35F0HEOsU0QZaP5HaTw14a7TWsHcnJBXz1iDaZFZGNeehLERseiepvmRX2QaJ7eNoR68NaL1FeqGrKN5ziPyHZO85dHRPadglAyLCHXy3aAF_N0v6Sh87VM4UGE1o48x9Yb1A9C5CaqOdvQYVJRQ"/>
+<img alt="Kyoto gallery image 3" class="rounded-lg w-full aspect-square object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASqPSyNRfMaWIeiQyjUGg6PNRZlRE0Zd1uVTUEHmFMsNHNd-OkvFXrslMPp313p7XcTH3IRD6UOztjRWnEwwxfLElwzun4JQxQoU7nKeGlDUGJzsHUuz4310bbfvsxnldg_LOsubZoV2kSyyoKe3ejL3RGd_zs3agWrASyfxRAlLxEpChsaoufJpJXstVppqra1Dn5sNSt1gfETApiI05BX1iWn6RQkXM1ssX2NkaR883YVt-4U0F47beoKT1OT2xb4xhXcVO-Zs8"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: MainContentCard -->
+</main>
+<!-- BEGIN: BottomNavigationBar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-brand-dark border-t border-brand-surface max-w-md mx-auto" data-purpose="bottom-navigation">
+<div class="flex justify-around items-center h-20">
+<!-- Nav Item: Home -->
+<a class="flex flex-col items-center justify-center text-brand-text-tertiary" href="#">
+<svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span class="text-xs">Home</span>
+</a>
+<!-- Nav Item: Explore -->
+<a class="flex flex-col items-center justify-center text-brand-text-tertiary" href="#">
+<svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21a9 9 0 100-18 9 9 0 000 18z" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 3v1m0 16v1m8-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span class="text-xs">Explore</span>
+</a>
+<!-- Nav Item: Group Chat -->
+<a class="flex flex-col items-center justify-center text-brand-text-tertiary" href="#">
+<svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span class="text-xs">Group Chat</span>
+</a>
+<!-- Nav Item: Go Out -->
+<a class="flex flex-col items-center justify-center text-brand-text-tertiary" href="#">
+<svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span class="text-xs">Go Out</span>
+</a>
+<!-- Nav Item: Place Wiki (Active) -->
+<a class="relative flex flex-col items-center justify-center text-brand-accent" href="#">
+<div class="absolute -top-6 flex items-center justify-center h-16 w-16 rounded-full bg-[#00C2A2]">
+<svg class="h-7 w-7 text-brand-dark" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.998 5.998 0 0116 10c0 .954-.223 1.856-.619 2.657a6.002 6.002 0 01-2.735 1.943A2 2 0 0113 16a2 2 0 00-4 0 1.5 1.5 0 01-1.5 1.5c-.526 0-.988-.27-1.256-.694A5.986 5.986 0 014 10c0-.341.042-.676.123-1.005a6.01 6.01 0 01.209-.968z" fill-rule="evenodd"></path></svg>
+</div>
+<span class="text-xs font-semibold pt-12">Place Wiki</span>
+</a>
+</div>
+</nav>
+<!-- END: BottomNavigationBar -->
+</div>
+</body></html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Go Out - Explore</title>
+<!-- Tailwind CSS v3 CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- FontAwesome for Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<!-- Tailwind CSS Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              'background': '#0f1114', // Main background color
+              'card': '#1e2025',      // Card background color
+              'teal': '#22d3ee',      // Accent teal color
+              'glow': 'rgba(34, 211, 238, 0.4)', // Teal glow color
+            },
+            text: {
+              'primary': '#ffffff',
+              'secondary': '#a0aec0', // Lighter grey for descriptions
+              'muted': '#718096',   // Muted grey for inactive nav items
+            }
+          },
+          boxShadow: {
+            'teal-glow': '0 0 15px 5px rgba(34, 211, 238, 0.4)',
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom CSS for elements that are tricky with Tailwind alone -->
+<style data-purpose="Global Styles">
+    /* Applying a sans-serif font to the whole page */
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-black flex justify-center items-center min-h-screen">
+<!-- BEGIN: MobileAppContainer -->
+<div class="w-full max-w-sm h-[844px] bg-brand-background text-text-primary overflow-hidden shadow-2xl rounded-3xl relative flex flex-col" id="mobile-app-container">
+<!-- BEGIN: StatusBar -->
+<header class="absolute top-0 left-0 right-0 z-10 px-6 pt-3" data-purpose="iOS status bar">
+<div class="flex justify-between items-center text-sm font-semibold">
+<!-- Time -->
+<span class="w-14 text-left">9:41</span>
+<!-- Status Icons -->
+<div class="flex items-center space-x-1.5">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M18.364 5.636a9 9 0 010 12.728M11.636 9.364a4 4 0 010 5.272m6.728-9.9a13 13 0 00-18.384 0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M8.111 16.556A5.5 5.5 0 0112 15c1.455 0 2.8.53 3.889 1.556M12 21a9 9 0 100-18 9 9 0 000 18z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<div class="w-6 h-3 border border-white rounded-sm flex items-center p-0.5">
+<div class="w-4/5 h-full bg-white rounded-sm"></div>
+</div>
+</div>
+</div>
+</header>
+<!-- END: StatusBar -->
+<!-- BEGIN: MainContent -->
+<main class="flex-grow overflow-y-auto px-4 pt-16 pb-24">
+<!-- Post Your Need Button -->
+<section class="py-4" data-purpose="Call to action button">
+<button class="w-full text-white font-bold py-4 rounded-full bg-brand-teal shadow-teal-glow">
+          Post your need
+        </button>
+</section>
+<!-- BEGIN: EventsList -->
+<section class="space-y-4" data-purpose="List of upcoming events">
+<!-- Card 1: Chandratal Trek -->
+<article class="bg-brand-card p-4 rounded-2xl" data-purpose="Event Card">
+<div class="flex flex-col space-y-3">
+<!-- Card Header -->
+<div class="flex items-start space-x-4">
+<img alt="Profile picture of Rupalee" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQBn7_uzNy21mNP2h8THpx4oJ7XPazjNPKGkpBHT9gxS8iiotN7wd0GsbZiqeVDA4nAN8OF7oKvil21_OkO-_n0RD6V1CP1lSIrCEfmHuIOFWXmvjGuzsxRT0WSQUJDZeW41k04ErCuQGm2I8JOeyUkv7opXVlf3Gt9X6krQKLdnKYWOZdkFq5L9A59C76fwMFskGx2vqC6l39uzN6Es07rAgwB-oCPKxC1KV3rYOP264GYxjWn2itzi2Je_-8LoWSmOQkRs6fmZI"/>
+<h2 class="text-lg font-bold text-text-primary flex-1">Join Rupalee on a trek to Chandratal</h2>
+</div>
+<!-- Card Body -->
+<p class="text-text-secondary">Seeking 2-3 companions for a Spiti Valley adventure. Beginner friendly.</p>
+<!-- Card Footer -->
+<div class="flex justify-between items-center">
+<div class="flex items-center space-x-2 text-text-secondary text-sm">
+<i class="fa-regular fa-clock"></i>
+<span>Dec 1-5 · 8:00 AM</span>
+</div>
+<button class="bg-brand-teal text-white font-semibold text-sm px-6 py-2 rounded-full">Join</button>
+</div>
+</div>
+</article>
+<!-- Card 2: Machu Picchu Hike -->
+<article class="bg-brand-card p-4 rounded-2xl" data-purpose="Event Card">
+<div class="flex flex-col space-y-3">
+<!-- Card Header -->
+<div class="flex items-start space-x-4">
+<img alt="Image of Machu Picchu" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwmEBn7gDxRT9T9R4pUSd9SRguCbfK693ztUq_hmvOpJ-9HPBB1_Zo0Vu1hVVmsWC4F_ehz0AwChSgf86VNsYrg-0XKk68bFiCFg9lEk8GuJNfE4vJLI_9YHciZm7i6EAFJy3V3hwY3xLhzeTji-4llBstxuAQPwvyuU5JxWjNF-De3XptcwpnJ3B_Yse4hxwmG-FVANZORa6NMu9TmF_OtS1ZJz34-RJi1iqIxn8PKYN5kZbBSly1_y57aPglOVhmauDbWr57hXE"/>
+<h2 class="text-lg font-bold text-text-primary flex-1">Hike Macchu Picchu with Alex</h2>
+</div>
+<!-- Card Body -->
+<p class="text-text-secondary">Looking for a group for the Inca Trail hike. Must have permits.</p>
+<!-- Card Footer -->
+<div class="flex justify-between items-center">
+<div class="flex items-center space-x-2 text-text-secondary text-sm">
+<i class="fa-regular fa-calendar"></i>
+<span>Feb 15-20 · 6:00 AM</span>
+</div>
+<button class="bg-brand-teal text-white font-semibold text-sm px-6 py-2 rounded-full">Join</button>
+</div>
+</div></article>
+<!-- Card 3: Thailand Island Hopping -->
+<article class="bg-brand-card p-4 rounded-2xl" data-purpose="Event Card">
+<div class="flex flex-col space-y-3">
+<!-- Card Header -->
+<div class="flex items-start space-x-4">
+<img alt="Image of Thai islands" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMaCXTcfv2rWun1L6Sz2mo5TIZxSb6-89uk_YhsdDYTlrEWhAm-Qd1fS-pPqB1dh0wxqoTB1lKA_kC5Ag9AoVGjuZ35mZ20WnLg18BQSegoj6xsgqhOw4OgWwGozDLqI_zAWQePfzL1pfYfBH4u28WTaVoaou9Mwp0tdbF9JQKKZqzfEIirtdgQpMFa1lvuXkLjC5PLljqQjRzSyFcMqM-7tqYhWSo5pDosv22L7ek1gVU4WY6LiZgovz4tCTwis_ib8zcbaikwrg"/>
+<h2 class="text-lg font-bold text-text-primary flex-1">Thailand Island Hopping with Chris</h2>
+</div>
+<!-- Card Body -->
+<p class="text-text-secondary">Exploring Phi Phi Islands. Flexible itinerary.</p>
+<!-- Card Footer -->
+<div class="flex justify-between items-center">
+<div class="flex items-center space-x-2 text-text-secondary text-sm">
+<i class="fa-regular fa-calendar"></i>
+<span>Jan 10-20 · All day</span>
+</div>
+<button class="bg-brand-teal text-white font-semibold text-sm px-6 py-2 rounded-full">Join</button>
+</div>
+</div>
+</article>
+</section>
+<!-- END: EventsList -->
+</main>
+<!-- END: MainContent -->
+<!-- BEGIN: FooterNavigationBar -->
+<nav class="absolute bottom-0 left-0 right-0 bg-brand-card/70 backdrop-blur-lg border-t border-white/10" data-purpose="Main app navigation">
+<div class="flex justify-around items-start pt-2 pb-5">
+<!-- Nav Item: Home -->
+<a class="flex flex-col items-center space-y-1 text-text-muted w-1/5" data-purpose="Nav link" href="#">
+<i class="fa-solid fa-house text-2xl"></i>
+<span class="text-xs">Home</span>
+</a>
+<!-- Nav Item: Explore -->
+<a class="flex flex-col items-center space-y-1 text-text-muted w-1/5" data-purpose="Nav link" href="#">
+<i class="fa-solid fa-magnifying-glass text-2xl"></i>
+<span class="text-xs">Explore</span>
+</a>
+<!-- Nav Item: Group Chat -->
+<a class="flex flex-col items-center space-y-1 text-text-muted w-1/5" data-purpose="Nav link" href="#">
+<i class="fa-regular fa-comment-dots text-2xl"></i>
+<span class="text-xs">Group Chat</span>
+</a>
+<!-- Nav Item: Go Out (Active) -->
+<div class="flex flex-col items-center space-y-1 text-brand-teal w-1/5 relative" data-purpose="Active nav link">
+<!-- Active indicator with glow -->
+<div class="absolute -top-2 w-8 h-1 bg-brand-teal rounded-full shadow-teal-glow"></div>
+<i class="fa-solid fa-compass text-2xl"></i>
+<span class="text-xs font-semibold">Go Out</span>
+</div>
+<!-- Nav Item: Place Wiki -->
+<a class="flex flex-col items-center space-y-1 text-text-muted w-1/5" data-purpose="Nav link" href="#">
+<i class="fa-solid fa-book-open text-2xl"></i>
+<span class="text-xs">Place Wiki</span>
+</a>
+</div>
+</nav>
+<!-- END: FooterNavigationBar -->
+</div>
+<!-- END: MobileAppContainer -->
+</body></html><!-- MISSING_IMAGES:
+- Profile picture of Rupalee in a snowy mountain setting.
+- Image of a lush green jungle path, likely representing Machu Picchu.
+- Image of a tropical beach with cliffs and clear blue water, representing Thai islands.
+- SVG or raster icons for mobile status bar (signal, wifi, battery). I've used rough SVG equivalents.
+- SVG or raster icons for navigation bar (home, search, chat, compass, book). I've used FontAwesome equivalents.
+-->

@@ -1,0 +1,50 @@
+{
+  "name": "nomadi-circle",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "tauri": "tauri",
+    "mobile:build": "next build && npx cap sync",
+    "mobile:open:android": "npx cap open android",
+    "seed": "NEXT_PUBLIC_FIREBASE_PROJECT_ID=nomadicircle-8f98a node --loader ts-node/esm src/lib/seed.ts",
+    "emulate": "npx firebase emulators:start --only firestore,auth --project nomadicircle-8f98a"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.3.0",
+    "@capacitor/camera": "^8.0.0",
+    "@capacitor/cli": "^7.6.1",
+    "@capacitor/core": "^8.3.0",
+    "@capacitor/geolocation": "^8.0.0",
+    "@capacitor/ios": "^8.3.0",
+    "@dataconnect/generated": "file:src/dataconnect-generated",
+    "@google/generative-ai": "^0.24.1",
+    "@tauri-apps/plugin-notification": "^2.3.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "firebase": "^12.6.0",
+    "lucide-react": "^0.561.0",
+    "next": "16.0.10",
+    "react": "19.2.1",
+    "react-dom": "19.2.1",
+    "sonner": "^2.0.7",
+    "tailwind-merge": "^3.4.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@tauri-apps/cli": "^2.9.6",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "babel-plugin-react-compiler": "1.0.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.0.10",
+    "firebase-tools": "^15.7.0",
+    "tailwindcss": "^4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5"
+  }
+}

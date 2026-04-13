@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Travel App Explore Screen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<!-- BEGIN: Custom Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-teal': '#25c4b4', // Adjusted from #2fd8c3 to a less saturated teal
+            'brand-dark': '#0d1a1b',
+            'brand-dark-2': '#1a292d',
+            'brand-dark-3': '#343c44',
+            'brand-light-gray': '#d1e0e3',
+          }
+        }
+      }
+    }
+  </script>
+<!-- END: Custom Tailwind Configuration -->
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="global-styles">
+    /* Applying a custom font and background to the body */
+    body {
+      font-family: 'Inter', sans-serif; /* A font similar to the one in the image */
+      background-color: #f0f0f0; /* Light gray background for the page to make the phone stand out */
+    }
+    /* For Webkit-based browsers to hide scrollbar but allow scrolling */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+    /* Custom gradient background */
+    .bg-custom-gradient {
+      background: radial-gradient(circle at 50% 0%, rgba(20, 81, 88, 0.4) 0%, #0d1a1b 40%);
+    }
+  </style>
+<!-- END: Custom Styles -->
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-gray-800 flex items-center justify-center min-h-screen">
+<!-- BEGIN: Mobile Phone Container -->
+<div class="relative w-[375px] h-[812px] bg-brand-dark overflow-hidden rounded-[40px] shadow-2xl border-4 border-black" data-purpose="mobile-frame">
+<!-- Background Gradient -->
+<div class="absolute inset-0 bg-custom-gradient"></div>
+<div class="relative z-10 h-full flex flex-col">
+<!-- BEGIN: Status Bar -->
+<header class="px-6 pt-4 text-white" data-purpose="status-bar">
+<div class="flex justify-end items-center gap-2">
+<i class="fa-solid fa-signal text-xs"></i>
+<i class="fa-solid fa-wifi text-xs"></i>
+<i class="fa-solid fa-battery-full text-sm"></i>
+</div>
+</header>
+<!-- END: Status Bar -->
+<!-- BEGIN: Main Content -->
+<main class="flex-grow px-4 overflow-y-auto no-scrollbar">
+<!-- BEGIN: Search Section -->
+<section class="mt-4" data-purpose="search-section">
+<!-- Search input field -->
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3">
+<i class="fa-solid fa-magnifying-glass text-gray-400"></i>
+</span>
+<input class="w-full bg-brand-dark-3 border-none rounded-lg pl-10 pr-4 py-3 text-white placeholder-gray-400 focus:ring-1 focus:ring-brand-teal" placeholder="Search destinations, activities..." type="text"/>
+</div>
+<!-- Filter tags container -->
+<div class="mt-4">
+<div class="flex space-x-2 overflow-x-auto no-scrollbar pb-2">
+<button class="px-4 py-1.5 bg-brand-light-gray text-brand-dark rounded-full text-sm font-medium flex-shrink-0">Jibhi</button>
+<button class="px-4 py-1.5 bg-brand-light-gray text-brand-dark rounded-full text-sm font-medium flex-shrink-0">Manali</button>
+<button class="px-4 py-1.5 bg-brand-light-gray text-brand-dark rounded-full text-sm font-medium flex-shrink-0">Phuktal</button>
+<button class="px-4 py-1.5 bg-brand-light-gray text-brand-dark rounded-full text-sm font-medium flex-shrink-0">Kasol</button>
+<button class="px-4 py-1.5 bg-brand-light-gray text-brand-dark rounded-full text-sm font-medium flex-shrink-0">Tirthan Valley</button>
+</div>
+</div>
+</section>
+<!-- END: Search Section -->
+<!-- BEGIN: AI Itinerary Button -->
+<section class="mt-6" data-purpose="ai-itinerary-button">
+<button class="w-full bg-brand-teal text-white rounded-2xl py-4 flex items-center justify-center gap-3 shadow-lg shadow-brand-teal/50"><svg class="h-6 w-6" fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16 8.00012C16.5304 8.00012 17.0391 7.7894 17.4142 7.41433C17.7893 7.03926 18 6.53055 18 6.00012C18 5.46969 17.7893 4.96098 17.4142 4.58591C17.0391 4.21084 16.5304 4.00012 16 4.00012C14.89 4.00012 14 4.89012 14 6.00012C14 6.53055 14.2107 7.03926 14.5858 7.41433C14.9609 7.7894 15.4696 8.00012 16 8.00012ZM16 10.0001C15.042 10.0001 14.126 9.70712 13.417 9.19112C13.233 9.34912 13.064 9.52012 12.912 9.70212L12.488 10.2301C13.06 11.0801 13.4 12.0901 13.4 13.2001C13.4 14.9701 12.64 16.5701 11.4 17.7101L11 18.2301V20.0001H13V18.2301L13.4 17.7101C14.64 16.5701 15.4 14.9701 15.4 13.2001C15.4 12.0901 15.06 11.0801 14.488 10.2301L14.088 9.70212C14.076 9.68612 14.065 9.67112 14.053 9.65512C14.621 9.24812 15.26 9.00012 16 9.00012C16.96 9.00012 17.86 9.35012 18.5 10.0001C19.14 9.35012 20.04 9.00012 21 9.00012C21.74 9.00012 22.379 9.24812 22.947 9.65512C22.935 9.67112 22.924 9.68612 22.912 9.70212L22.512 10.2301C21.94 11.0801 21.6 12.0901 21.6 13.2001C21.6 14.9701 22.36 16.5701 23.6 17.7101L24 18.2301V20.0001H26V18.2301L25.6 17.7101C24.36 16.5701 23.6 14.9701 23.6 13.2001C23.6 12.0901 23.94 11.0801 24.512 10.2301L24.912 9.70212C24.76 9.52012 24.591 9.34912 24.407 9.19112C25.116 9.70712 26.032 10.0001 27 10.0001C27.5304 10.0001 28.0391 9.7894 28.4142 9.41433C28.7893 9.03926 29 8.53055 29 8.00012C29 7.46969 28.7893 6.96098 28.4142 6.58591C28.0391 6.21084 27.5304 6.00012 27 6.00012C25.89 6.00012 25 6.89012 25 8.00012C25 8.35374 25.0857 8.69438 25.242 9.00012H21.758C21.9143 8.69438 22 8.35374 22 8.00012C22 6.89012 21.11 6.00012 20 6.00012C18.89 6.00012 18 6.89012 18 8.00012C18 8.35374 18.0857 8.69438 18.242 9.00012H14.758C14.9143 8.69438 15 8.35374 15 8.00012C15 6.89012 14.11 6.00012 13 6.00012C11.89 6.00012 11 6.89012 11 8.00012C11 8.53055 11.2107 9.03926 11.5858 9.41433C11.9609 9.7894 12.4696 10.0001 13 10.0001C13.74 10.0001 14.379 9.75212 14.947 9.34512C14.935 9.32912 14.924 9.31412 14.912 9.29812L14.512 8.77012C13.94 7.92012 13.6 6.91012 13.6 5.80012C13.6 4.03012 14.36 2.43012 15.6 1.29012L16 0.770122V-1H18V0.770122L17.6 1.29012C16.36 2.43012 15.6 4.03012 15.6 5.80012C15.6 6.91012 15.94 7.92012 16.512 8.77012L16.912 9.29812C16.924 9.31412 16.935 9.32912 16.947 9.34512C17.0621 9.2291 17.1871 9.1233 17.32 9.03012H19.68C19.8129 9.1233 19.9379 9.2291 20.053 9.34512C20.065 9.32912 20.076 9.31412 20.088 9.29812L20.488 8.77012C21.06 7.92012 21.4 6.91012 21.4 5.80012C21.4 4.03012 20.64 2.43012 19.4 1.29012L19 0.770122V-1H21V0.770122L21.4 1.29012C22.64 2.43012 23.4 4.03012 23.4 5.80012C23.4 6.91012 23.06 7.92012 22.488 8.77012L22.088 9.29812C22.076 9.31412 22.065 9.32912 22.053 9.34512C22.621 9.75212 23.26 10.0001 24 10.0001C24.5304 10.0001 25.0391 9.7894 25.4142 9.41433C25.7893 9.03926 26 8.53055 26 8.00012C26 6.89012 25.11 6.00012 24 6.00012C22.89 6.00012 22 6.89012 22 8.00012C22 8.53055 22.2107 9.03926 22.5858 9.41433C22.9609 9.7894 23.4696 10.0001 24 10.0001Z" fill="white" transform="translate(-10 -4)"></path><path d="M12 12C10.3431 12 9 13.3431 9 15C9 16.6569 10.3431 18 12 18C13.6569 18 15 16.6569 15 15C15 13.3431 13.6569 12 12 12ZM12 16C11.4477 16 11 15.5523 11 15C11 14.4477 11.4477 14 12 14C12.5523 14 13 14.4477 13 15C13 15.5523 12.5523 16 12 16Z" fill="white"></path><path d="M18.364 18.364L16.2426 16.2426" stroke="white" stroke-linecap="round" stroke-width="1.5"></path><path d="M5.63603 5.63603L7.75735 7.75735" stroke="white" stroke-linecap="round" stroke-width="1.5"></path><path d="M18.364 5.63603L16.2426 7.75735" stroke="white" stroke-linecap="round" stroke-width="1.5"></path><path d="M5.63603 18.364L7.75735 16.2426" stroke="white" stroke-linecap="round" stroke-width="1.5"></path></svg><span class="font-semibold text-lg">Ask AI Travel Itinerary</span></button>
+</section>
+<!-- END: AI Itinerary Button -->
+<!-- BEGIN: Discover Next Section -->
+<section class="mt-8 pb-20" data-purpose="discover-next-section">
+<h2 class="text-white text-xl font-bold">Discover Next</h2>
+<!-- Card list container -->
+<div class="mt-4 space-y-4">
+<!-- Destination Card 1 -->
+<article class="relative h-48 rounded-2xl overflow-hidden" data-purpose="destination-card">
+<img alt="Snow-capped mountains of Leh, Ladakh at sunrise" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPbs-pNdzhjhstvFUbTs7pPK3o8gGkZgdo5y6uT_bMW9A2TF9tWeP448CR0WJ999_M5qj6Oc29gFxovZvhF3WxdFpAhwmeq0njYC5Z5Olz33pwhsvbP_zCanN-ElE6j-0oggCzaF6ehJArk1snMQlNUa7PvWkTt3KzTw89hzlBkW_JFS9vul90OSQGT8SutextOiL1IY4Ah836Ybe-ZnLy6zUJwXb2R_htf2HzxFdwyZtu1u2YPmRuVercXk6qgCoF4-F_u0KKCpA"/>
+<!-- Gradient overlay for text readability -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4 text-white">
+<h3 class="text-2xl font-bold">Leh, Ladakh</h3>
+<p class="text-sm text-gray-200">Cultural trip, Adventure</p>
+</div>
+</article>
+<!-- Destination Card 2 -->
+<article class="relative h-48 rounded-2xl overflow-hidden" data-purpose="destination-card">
+<img alt="A rustic wooden cabin in a dense green forest in Spiti Valley" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJEUVKqykvEssneXMTXy29-4aHOisl3wv7uyfj7B82pcEa9IHH13K8Aq440Q4QRj4_FULzlJZA95YarVhIzHeadwfs_VAN9uJGUm-a3Ow7-s0T3vuBtF-5ZnYedCumjn3rejUIJ8VDkka4Pc1LCbMgufiF7-lLV_N78hg3ijUOfbmVBMmB8RtLo5yiGNKtddsq9VQZzIm0tal4lkYVoVF3hcjewDOfKYrxfsAI1m7x0wNVHyWxrUS9sPSMFApFAnV7SIaE4_q9vuQ"/>
+<!-- Gradient overlay for text readability -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4 text-white">
+<h3 class="text-2xl font-bold">Spiti Valley</h3>
+<p class="text-sm text-gray-200">Backpacking, Scenic</p>
+</div>
+</article>
+</div>
+</section>
+<!-- END: Discover Next Section -->
+</main>
+<!-- END: Main Content -->
+<!-- BEGIN: Bottom Navigation Bar -->
+<footer class="absolute bottom-0 left-0 right-0" data-purpose="bottom-navigation">
+<!-- Blurred background effect -->
+<div class="absolute inset-x-0 bottom-0 h-28 bg-brand-dark-2/80 backdrop-blur-lg"></div>
+<nav class="relative z-10 flex justify-around items-start pt-3 pb-6 text-gray-400">
+<!-- Home Nav Item -->
+<a class="flex flex-col items-center w-1/5 text-center text-xs" href="#">
+<i class="fa-solid fa-house text-2xl mb-1"></i>
+<span>Home</span>
+</a>
+<!-- Explore Nav Item (Active) -->
+<a class="flex flex-col items-center w-1/5 text-center text-xs text-brand-teal" href="#">
+<div class="relative">
+<i class="fa-solid fa-compass text-2xl mb-1"></i>
+<!-- Active state glow -->
+<div class="absolute -inset-2.5 bg-brand-teal/30 blur-lg rounded-full"></div>
+</div>
+<span>Explore</span>
+</a>
+<!-- Group Chat Nav Item -->
+<a class="flex flex-col items-center w-1/5 text-center text-xs" href="#">
+<i class="fa-solid fa-comments text-2xl mb-1"></i>
+<span>Group Chat</span>
+</a>
+<!-- Go Out Nav Item -->
+<a class="flex flex-col items-center w-1/5 text-center text-xs" href="#">
+<i class="fa-solid fa-calendar-days text-2xl mb-1"></i>
+<span>Go Out</span>
+</a>
+<!-- Place Wiki Nav Item -->
+<a class="flex flex-col items-center w-1/5 text-center text-xs" href="#">
+<i class="fa-solid fa-book-open text-2xl mb-1"></i>
+<span>Place Wiki</span>
+</a>
+</nav>
+<!-- Home indicator bar for iOS -->
+<div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1.5 bg-gray-400 rounded-full"></div>
+</footer>
+<!-- END: Bottom Navigation Bar -->
+</div>
+</div>
+<!-- END: Mobile Phone Container -->
+</body></html>

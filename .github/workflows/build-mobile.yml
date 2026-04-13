@@ -1,0 +1,79 @@
+name: Build Mobile Apps (iOS & Android)
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-android:
+    name: Build Android APK
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm check || npm install
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Sync Capacitor
+        run: npx cap sync android
+
+      - name: Build Android APK
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug
+
+      - name: Upload Android APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-debug.apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+
+  build-ios:
+    name: Build iOS App
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm check || npm install
+
+      - name: Sync Capacitor
+        run: npx cap sync ios
+
+      - name: Build iOS App
+        run: |
+          cd ios/App
+          pod install
+          xcodebuild -workspace App.xcworkspace -scheme App -configuration Debug -sdk iphonesimulator -derivedDataPath build
+        
+      - name: Zip iOS Output
+        run: |
+          cd ios/App/build/Build/Products/Debug-iphonesimulator
+          zip -r App.zip App.app
+
+      - name: Upload iOS App
+        uses: actions/upload-artifact@v3
+        with:
+          name: iOS-App
+          path: ios/App/build/Build/Products/Debug-iphonesimulator/App.zip

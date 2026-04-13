@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "696324461980",
+    "project_id": "nomadicircle-8f98a",
+    "storage_bucket": "nomadicircle-8f98a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:696324461980:android:db58bdd8620755be726459",
+        "android_client_info": {
+          "package_name": "com.nomadicircle"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDijKKBDDBV09yA-5QdkktTYi4_GcfYN8M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
