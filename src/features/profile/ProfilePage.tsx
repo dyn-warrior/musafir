@@ -29,7 +29,7 @@ export default function ProfilePage() {
         async function load() {
             try {
                 const firestoreProfile = await getUserProfile(user!.uid);
-                setProfile(firestoreProfile || { uid: user!.uid, displayName: user!.displayName || "Nomadi User", email: user!.email || "", photoURL: user!.photoURL || "", bio: "", location: "" });
+                setProfile(firestoreProfile || { uid: user!.uid, displayName: user!.displayName || "Musafir User", email: user!.email || "", photoURL: user!.photoURL || "", bio: "", location: "" });
 
                 const [trips, stories] = await Promise.all([
                     getMyGoOutRequests(user!.uid),
@@ -65,7 +65,7 @@ export default function ProfilePage() {
         );
     }
 
-    const displayName = profile?.displayName || user.displayName || "Nomadi User";
+    const displayName = profile?.displayName || user.displayName || "Musafir User";
     const photoURL = profile?.photoURL || user.photoURL;
     const initials = displayName.split(" ").map((n: string) => n[0]).join("").slice(0, 2).toUpperCase();
 

@@ -8,7 +8,7 @@
 // Use the REST API approach for seeding in the emulator
 const EMULATOR_HOST = "localhost";
 const EMULATOR_PORT = 8080;
-const PROJECT_ID = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || "nomadicircle-8f98a";
+const PROJECT_ID = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || "Musafir-8f98a";
 const BASE_URL = `http://${EMULATOR_HOST}:${EMULATOR_PORT}/v1/projects/${PROJECT_ID}/databases/(default)/documents`;
 
 async function clearCollection(collectionName: string) {

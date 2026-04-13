@@ -40,7 +40,7 @@ function renderMarkdown(text: string): string {
 
 export function AIChatWindow({ onClose }: AIChatWindowProps) {
     const [messages, setMessages] = useState<Message[]>([
-        { id: 1, text: "Hi! I'm Nomadi AI 🌍 — your travel companion. Ask me anything about trips, treks, stays, or hidden gems!", sender: "ai" }
+        { id: 1, text: "Hi! I'm Musafir AI 🌍 — your travel companion. Ask me anything about trips, treks, stays, or hidden gems!", sender: "ai" }
     ]);
     const [inputText, setInputText] = useState("");
     const [isStreaming, setIsStreaming] = useState(false);
@@ -70,10 +70,10 @@ export function AIChatWindow({ onClose }: AIChatWindowProps) {
         setMessages(prev => [...prev, { id: aiMsgId, text: "", sender: "ai", streaming: true }]);
 
         try {
-            const { streamNomAdi } = await import("@/lib/gemini");
+            const { streamMusafir } = await import("@/lib/gemini");
             let fullText = "";
 
-            for await (const chunk of streamNomAdi(userText, geminiHistory.current)) {
+            for await (const chunk of streamMusafir(userText, geminiHistory.current)) {
                 fullText += chunk;
                 const rendered = renderMarkdown(fullText);
                 setMessages(prev =>
@@ -91,7 +91,7 @@ export function AIChatWindow({ onClose }: AIChatWindowProps) {
                 { role: "model", parts: [{ text: fullText }] },
             ];
         } catch (err: any) {
-            console.error("[NomAdi AI] Error:", err);
+            console.error("[Musafir AI] Error:", err);
             const msg = err?.message || String(err);
             const errText = msg.includes("API key")
                 ? "⚠️ API key not configured."
@@ -99,7 +99,7 @@ export function AIChatWindow({ onClose }: AIChatWindowProps) {
                     ? `⚠️ Access denied (403). Check AI Studio key permissions.`
                     : msg.includes("404") || msg.includes("not found")
                         ? "⚠️ Model not available for this key. Try another region at aistudio.google.com."
-                        : "⚠️ Couldn't reach Nomadi AI. Check your connection and try again.";
+                        : "⚠️ Couldn't reach Musafir AI. Check your connection and try again.";
 
             setMessages(prev =>
                 prev.map(m => m.id === aiMsgId ? { ...m, text: errText, streaming: false } : m)
@@ -118,7 +118,7 @@ export function AIChatWindow({ onClose }: AIChatWindowProps) {
                         <Sparkles className="w-4 h-4" />
                     </div>
                     <div>
-                        <p className="text-sm font-bold leading-tight">Nomadi AI</p>
+                        <p className="text-sm font-bold leading-tight">Musafir AI</p>
                         <p className="text-[10px] opacity-75">Powered by Gemini</p>
                     </div>
                 </div>

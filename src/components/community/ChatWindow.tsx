@@ -72,7 +72,7 @@ export function ChatWindow({ chatId, onBack }: ChatWindowProps) {
             const { sendChatMessage } = await import("@/lib/firestore");
             await sendChatMessage(chatId, text, {
                 uid: user.uid,
-                name: user.displayName || "Nomadi User",
+                name: user.displayName || "Musafir User",
                 avatar: user.photoURL || "",
             });
         } catch (err) {

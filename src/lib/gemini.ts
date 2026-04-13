@@ -1,6 +1,6 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const SYSTEM_PROMPT = `You are Nomadi AI — a friendly, enthusiastic travel companion and expert for India and beyond, built into the Nomadi Circle app for wanderers and backpackers.
+const SYSTEM_PROMPT = `You are Musafir AI — a friendly, enthusiastic travel companion and expert for India and beyond, built into the Musafir app for wanderers and backpackers.
 
 Your personality:
 - Warm, adventurous, and encouraging
@@ -13,7 +13,7 @@ Your expertise:
 - India travel: treks, road trips, beaches, mountains, culture, festivals
 - Budget backpacking, hostels, home-stays, local food
 - Trip planning: itineraries, best seasons, packing tips
-- The Nomadi Circle app: Explore, Stays, Festivals, Community groups, Go-Out
+- The Musafir app: Explore, Stays, Festivals, Community groups, Go-Out
 
 When asked about destinations:
 1. One-line vibe
@@ -40,7 +40,7 @@ function getClient(): GoogleGenerativeAI {
 export type GeminiHistory = { role: "user" | "model"; parts: { text: string }[] }[];
 
 /** Single-shot response */
-export async function askNomAdi(userMessage: string, history: GeminiHistory): Promise<string> {
+export async function askMusafir(userMessage: string, history: GeminiHistory): Promise<string> {
     const model = getClient().getGenerativeModel({ model: MODEL, systemInstruction: SYSTEM_PROMPT });
     const chat = model.startChat({ history });
     const result = await chat.sendMessage(userMessage);
@@ -48,7 +48,7 @@ export async function askNomAdi(userMessage: string, history: GeminiHistory): Pr
 }
 
 /** Streaming generator — yields text chunks as they arrive */
-export async function* streamNomAdi(
+export async function* streamMusafir(
     userMessage: string,
     history: GeminiHistory
 ): AsyncGenerator<string> {

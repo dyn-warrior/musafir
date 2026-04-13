@@ -20,7 +20,7 @@ export function GoogleLoginButton() {
             // Save / update user profile in Firestore
             const { upsertUserProfile } = await import("@/lib/firestore");
             await upsertUserProfile(user.uid, {
-                displayName: user.displayName || "Nomadi User",
+                displayName: user.displayName || "Musafir User",
                 email: user.email || "",
                 photoURL: user.photoURL || "",
             });

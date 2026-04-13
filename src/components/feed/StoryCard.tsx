@@ -67,7 +67,7 @@ export function StoryCard({ story, onUpdate }: StoryCardProps) {
             const newComment: StoryComment = {
                 id: Date.now().toString(),
                 uid: user.uid,
-                name: user.displayName || "Nomadi User",
+                name: user.displayName || "Musafir User",
                 avatar: user.photoURL || `https://ui-avatars.com/api/?name=N`,
                 text: commentText.trim(),
                 createdAt: null,
@@ -76,7 +76,7 @@ export function StoryCard({ story, onUpdate }: StoryCardProps) {
             setCommentText("");
             await addStoryComment(story.id, {
                 uid: user.uid,
-                name: user.displayName || "Nomadi User",
+                name: user.displayName || "Musafir User",
                 avatar: user.photoURL || `https://ui-avatars.com/api/?name=N`,
                 text: newComment.text,
             });

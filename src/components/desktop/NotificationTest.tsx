@@ -27,7 +27,7 @@ export function NotificationTest() {
 
             if (permission) {
                 sendNotification({
-                    title: "Nomadi Circle",
+                    title: "Musafir",
                     body: "This is a native desktop notification! 🚀",
                 });
             }

@@ -58,7 +58,7 @@ export default function ProfileClient({ uid }: { uid: string }) {
         );
     }
 
-    const displayName = profile.displayName || "Nomadi User";
+    const displayName = profile.displayName || "Musafir User";
     const photoURL = profile.photoURL;
     const initials = displayName.split(" ").map((n: string) => n[0]).join("").slice(0, 2).toUpperCase();
 

@@ -65,7 +65,7 @@ export function CreateStoryModal({ isOpen, onClose, onStoryCreated }: CreateStor
             // Save to Firestore with 24h expiry
             const { addStory } = await import("@/lib/firestore");
             await addStory({
-                name: user.displayName || "Nomadi User",
+                name: user.displayName || "Musafir User",
                 image: user.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName || "U")}&background=14532d&color=fff`,
                 mediaUrl,
                 mediaType: fileType!,

@@ -338,7 +338,7 @@ export default function AdminPage() {
             <div className="border-b border-border/60 bg-card sticky top-0 z-10">
                 <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
                     <div className="flex items-center gap-2 font-bold font-heading text-lg">
-                        <Home className="w-5 h-5 text-primary" /> Nomadi Admin
+                        <Home className="w-5 h-5 text-primary" /> Musafir Admin
                     </div>
                     <Button variant="ghost" size="sm" onClick={() => signOut(auth).then(() => router.push("/"))}>
                         <LogOut className="w-4 h-4 mr-1" /> Sign out

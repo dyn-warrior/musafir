@@ -81,7 +81,7 @@ export function CreatePostModal({ isOpen, onClose, onPostCreated }: CreatePostMo
             }
 
             // Save post to Firestore
-            const userName = user?.displayName || "Nomadi User";
+            const userName = user?.displayName || "Musafir User";
             const userAvatar = user?.photoURL || "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200&auto=format&fit=crop";
 
             await addDoc(collection(db, "posts"), {
@@ -149,7 +149,7 @@ export function CreatePostModal({ isOpen, onClose, onPostCreated }: CreatePostMo
                             className="w-10 h-10 rounded-full object-cover border border-border"
                         />
                         <div>
-                            <p className="font-semibold text-sm">{user?.displayName || "Nomadi User"}</p>
+                            <p className="font-semibold text-sm">{user?.displayName || "Musafir User"}</p>
                             <div className="flex items-center gap-1 mt-0.5">
                                 <MapPin className="w-3 h-3 text-muted-foreground" />
                                 <input

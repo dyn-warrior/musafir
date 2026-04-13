@@ -42,7 +42,7 @@ export function JoinTripModal({ isOpen, onClose, trip, posterUid, posterName, po
             const myAvatar = user.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName || "U")}&background=random`;
             const dmId = await getOrCreateDM(
                 user.uid,
-                { name: user.displayName || user.email?.split("@")[0] || "Nomadi User", avatar: myAvatar },
+                { name: user.displayName || user.email?.split("@")[0] || "Musafir User", avatar: myAvatar },
                 posterUid,
                 { name: posterName, avatar: posterAvatar }
             );

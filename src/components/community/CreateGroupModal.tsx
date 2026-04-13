@@ -38,7 +38,7 @@ export function CreateGroupModal({ isOpen, onClose, onCreated }: CreateGroupModa
                 description: description.trim(),
                 isPublic,
                 creatorUid: user.uid,
-                creatorName: user.displayName || "Nomadi User",
+                creatorName: user.displayName || "Musafir User",
                 creatorAvatar: user.photoURL || "",
             });
 

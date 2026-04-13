@@ -56,7 +56,7 @@ export function PostNeedModal({ isOpen, onClose, onPosted }: PostNeedModalProps)
             await addGoOutRequest({
                 authorUid: user.uid,
                 user: {
-                    name: user.displayName || user.email?.split("@")[0] || "Nomadi User",
+                    name: user.displayName || user.email?.split("@")[0] || "Musafir User",
                     age: 0,
                     image: user.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName || "N")}&background=random`,
                 },

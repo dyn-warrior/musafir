@@ -34,7 +34,7 @@ export default function WikiPage() {
             {/* Hero Search */}
             <div className="bg-background border-b border-border/50 py-12 px-6">
                 <div className="max-w-3xl mx-auto text-center space-y-6">
-                    <h1 className="text-3xl md:text-4xl font-heading font-bold">Nomadi Wiki</h1>
+                    <h1 className="text-3xl md:text-4xl font-heading font-bold">Musafir Wiki</h1>
                     <p className="text-muted-foreground text-lg">The community-driven knowledge base for travelers.</p>
 
                     <div className="relative max-w-xl mx-auto">

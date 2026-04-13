@@ -1,5 +1,5 @@
 /**
- * Firestore helper functions for Nomadi Circle
+ * Firestore helper functions for Musafir
  * All collections read from Firestore; falls back gracefully on error.
  */
 import {
@@ -662,7 +662,7 @@ export async function upsertUserProfile(
         doc(db, "users", uid),
         {
             uid,
-            displayName: data.displayName || "Nomadi User",
+            displayName: data.displayName || "Musafir User",
             email: data.email || "",
             photoURL: data.photoURL || "",
             updatedAt: sts(),
